@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="620.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="valerio.software1.ModifyPartController">
+<AnchorPane prefHeight="620.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="valerio.software1.controllers.ModifyPartController">
    <children>
       <VBox prefHeight="400.0" prefWidth="583.0">
          <children>

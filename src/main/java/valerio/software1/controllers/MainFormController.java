@@ -1,4 +1,4 @@
-package valerio.software1;
+package valerio.software1.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

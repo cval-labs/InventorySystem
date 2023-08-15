@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="620.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="valerio.software1.AddPartController">
+<AnchorPane prefHeight="620.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="valerio.software1.controllers.AddPartController">
    <children>
       <Label layoutX="81.0" layoutY="38.0" text="Add Part">
          <font>

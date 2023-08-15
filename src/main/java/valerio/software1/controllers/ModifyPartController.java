@@ -1,4 +1,4 @@
-package valerio.software1;
+package valerio.software1.controllers;
 
 public class ModifyPartController {
 }
