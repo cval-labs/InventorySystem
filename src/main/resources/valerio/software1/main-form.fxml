@@ -19,7 +19,7 @@
       <Region layoutX="482.0" layoutY="54.0" prefHeight="257.0" prefWidth="449.0" style="-fx-background-color: #b5b5b5;" />
       <VBox prefHeight="400.0" prefWidth="952.0" spacing="10.0">
          <children>
-            <Label text="Inventory Managment System">
+            <Label text="Inventory Management System">
                <font>
                   <Font name="Silom" size="15.0" />
                </font>
