@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="952.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="valerio.software1.controllers.MainFormController">
    <children>
       <Region layoutX="19.0" layoutY="54.0" prefHeight="257.0" prefWidth="449.0" style="-fx-background-color: #b5b5b5;" />
@@ -35,15 +34,15 @@
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="25.0" prefWidth="186.0" promptText="Search by Part ID or Number" />
+                              <TextField fx:id="mainPartSearch" prefHeight="25.0" prefWidth="186.0" promptText="Search by Part ID or Number" />
                            </children>
                         </HBox>
-                        <TableView prefHeight="200.0" prefWidth="200.0">
+                        <TableView fx:id="mainPartTV" prefHeight="200.0" prefWidth="200.0">
                            <columns>
-                              <TableColumn prefWidth="60.0" text="Part ID" />
-                              <TableColumn prefWidth="115.0" text="Part Name" />
-                              <TableColumn prefWidth="112.0" text="Inventory Level" />
-                              <TableColumn prefWidth="143.0" text="Price / Cost per Unit" />
+                              <TableColumn fx:id="mainPartIdCol" prefWidth="60.0" text="Part ID" />
+                              <TableColumn fx:id="mainPartNameCol" prefWidth="115.0" text="Part Name" />
+                              <TableColumn fx:id="mainPartInvLevelCol" prefWidth="112.0" text="Inventory Level" />
+                              <TableColumn fx:id="mainPartPriceCol" prefWidth="143.0" text="Price / Cost per Unit" />
                            </columns>
                         </TableView>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
@@ -74,15 +73,15 @@
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="25.0" prefWidth="186.0" promptText="Search by Product ID or Number" />
+                              <TextField fx:id="mainProductSearch" prefHeight="25.0" prefWidth="186.0" promptText="Search by Product ID or Number" />
                            </children>
                         </HBox>
-                        <TableView prefHeight="200.0" prefWidth="200.0">
+                        <TableView fx:id="mainProductTV" prefHeight="200.0" prefWidth="200.0">
                            <columns>
-                              <TableColumn prefWidth="71.0" text="Product ID" />
-                              <TableColumn prefWidth="119.0" text="Product Name" />
-                              <TableColumn prefWidth="107.0" text="Inventory Level" />
-                              <TableColumn prefWidth="133.0" text="Price / Cost per Unit" />
+                              <TableColumn fx:id="mainProdIdCol" prefWidth="71.0" text="Product ID" />
+                              <TableColumn fx:id="mainProdNameCol" prefWidth="119.0" text="Product Name" />
+                              <TableColumn fx:id="mainProdInvLevelCol" prefWidth="107.0" text="Inventory Level" />
+                              <TableColumn fx:id="mainProdPriceCol" prefWidth="133.0" text="Price / Cost per Unit" />
                            </columns>
                         </TableView>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">

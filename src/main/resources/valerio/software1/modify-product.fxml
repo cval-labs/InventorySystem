@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="valerio.software1.controllers.ModifyProductController">
    <children>
       <HBox prefHeight="548.0" prefWidth="800.0">
@@ -54,12 +53,12 @@
                               <Insets right="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <TextField GridPane.columnIndex="1" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextField GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <TextField fx:id="modProdIdText" GridPane.columnIndex="1" />
+                        <TextField fx:id="modProdNameText" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="modProdPriceText" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="modProdInvText" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="modProdMaxText" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="modProdMinText" GridPane.columnIndex="3" GridPane.rowIndex="4" />
                      </children>
                      <padding>
                         <Insets left="30.0" />
@@ -74,19 +73,19 @@
                <children>
                   <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="Search by Part ID or Name">
+                        <TextField fx:id="modProdSearch" promptText="Search by Part ID or Name">
                            <HBox.margin>
                               <Insets bottom="10.0" />
                            </HBox.margin>
                         </TextField>
                      </children>
                   </HBox>
-                  <TableView prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="modProdAddingTV" prefHeight="200.0" prefWidth="200.0">
                      <columns>
-                        <TableColumn prefWidth="60.0" text="Part ID" />
-                        <TableColumn prefWidth="81.0" text="Part Name" />
-                        <TableColumn prefWidth="102.0" text="Inventory Level" />
-                        <TableColumn prefWidth="146.0" text="Price / Cost per Unit" />
+                        <TableColumn fx:id="modProdAddPartId" prefWidth="60.0" text="Part ID" />
+                        <TableColumn fx:id="modProdAddPartName" prefWidth="81.0" text="Part Name" />
+                        <TableColumn fx:id="modProdAddInvLevel" prefWidth="102.0" text="Inventory Level" />
+                        <TableColumn fx:id="modProdAddPrice" prefWidth="146.0" text="Price / Cost per Unit" />
                      </columns>
                   </TableView>
                   <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="368.0">
@@ -98,12 +97,12 @@
                         </Button>
                      </children>
                   </HBox>
-                  <TableView prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="modProdRemovingTV" prefHeight="200.0" prefWidth="200.0">
                      <columns>
-                        <TableColumn prefWidth="59.0" text="Part ID" />
-                        <TableColumn prefWidth="78.0" text="Part Name" />
-                        <TableColumn prefWidth="111.0" text="Inventory Level" />
-                        <TableColumn prefWidth="141.0" text="Price / Cost per Unit" />
+                        <TableColumn fx:id="modProdRemPartId" prefWidth="59.0" text="Part ID" />
+                        <TableColumn fx:id="modProdRemPartName" prefWidth="78.0" text="Part Name" />
+                        <TableColumn fx:id="modProdRenInvLevel" prefWidth="111.0" text="Inventory Level" />
+                        <TableColumn fx:id="modProdRemPrice" prefWidth="141.0" text="Price / Cost per Unit" />
                      </columns>
                   </TableView>
                   <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
