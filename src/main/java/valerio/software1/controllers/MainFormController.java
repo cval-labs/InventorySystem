@@ -1,5 +1,6 @@
 package valerio.software1.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -47,6 +48,45 @@ public class MainFormController implements Initializable {
     @FXML
     private TableView<?> mainProductTV;
 
+    @FXML
+    void onActionAddPart(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionAddProduct(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionDeletePart(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionDeleteProduct(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionExit(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionModifyPart(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionModifyProduct(ActionEvent event) {
+
+    }
+
+    /**
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

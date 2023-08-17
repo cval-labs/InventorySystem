@@ -66,8 +66,8 @@
       </VBox>
       <HBox layoutX="387.0" layoutY="391.0" prefHeight="42.0" prefWidth="125.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" text="Save" />
-            <Button mnemonicParsing="false" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#onActionSaveAddedPart" text="Save" />
+            <Button mnemonicParsing="false" onAction="#onActionCancelAddedPart" text="Cancel" />
          </children>
       </HBox>
    </children>

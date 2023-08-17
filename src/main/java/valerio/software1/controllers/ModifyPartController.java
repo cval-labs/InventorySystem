@@ -1,5 +1,6 @@
 package valerio.software1.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
@@ -35,6 +36,21 @@ public class ModifyPartController implements Initializable {
 
     @FXML
     private TextField modifyPartPriceText;
+
+    @FXML
+    void onActionCancelModifyPart(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionSaveModifyPart(ActionEvent event) {
+
+    }
+
+    /**
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

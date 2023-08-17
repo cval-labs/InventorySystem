@@ -1,5 +1,6 @@
 package valerio.software1.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -61,6 +62,30 @@ public class ModifyProductController implements Initializable {
     @FXML
     private TextField modProdSearch;
 
+    @FXML
+    void onActionAddModProduct(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionCancelModifyProduct(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionRemovePartModProduct(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionSaveModifyProduct(ActionEvent event) {
+
+    }
+
+    /**
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

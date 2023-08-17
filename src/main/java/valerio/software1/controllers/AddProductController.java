@@ -1,5 +1,6 @@
 package valerio.software1.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -59,6 +60,30 @@ public class AddProductController implements Initializable {
     @FXML
     private TextField addProdSearch;
 
+    @FXML
+    void OnActionRemoveAssociatedPart(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionAddPart(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionCancelAddProduct(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionSaveAddProduct(ActionEvent event) {
+
+    }
+
+    /**
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
