@@ -49,12 +49,13 @@ public class MainFormController implements Initializable {
     private TableView<?> mainProductTV;
 
     @FXML
-    void onActionAddPart(ActionEvent event) {
+    void onActionExit(ActionEvent event) {
 
     }
 
+    // Parts Methods
     @FXML
-    void onActionAddProduct(ActionEvent event) {
+    void onActionAddPart(ActionEvent event) {
 
     }
 
@@ -64,17 +65,18 @@ public class MainFormController implements Initializable {
     }
 
     @FXML
-    void onActionDeleteProduct(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onActionExit(ActionEvent event) {
-
-    }
-
-    @FXML
     void onActionModifyPart(ActionEvent event) {
+
+    }
+
+    // Product Methods
+    @FXML
+    void onActionAddProduct(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionDeleteProduct(ActionEvent event) {
 
     }
 
