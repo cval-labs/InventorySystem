@@ -50,39 +50,39 @@ public class MainFormController implements Initializable {
 
     @FXML
     void onActionExit(ActionEvent event) {
-
+        System.out.println("Exit button clicked");
     }
 
     // Parts Methods
     @FXML
     void onActionAddPart(ActionEvent event) {
-
+        System.out.println("Add Part button clicked");
     }
 
     @FXML
     void onActionDeletePart(ActionEvent event) {
-
+        System.out.println("Delete Part button clicked");
     }
 
     @FXML
     void onActionModifyPart(ActionEvent event) {
-
+        System.out.println("Modify Part button clicked");
     }
 
     // Product Methods
     @FXML
     void onActionAddProduct(ActionEvent event) {
-
+        System.out.println("Add Product button clicked");
     }
 
     @FXML
     void onActionDeleteProduct(ActionEvent event) {
-
+        System.out.println("Delete Product button clicked");
     }
 
     @FXML
     void onActionModifyProduct(ActionEvent event) {
-
+        System.out.println("Modify Product button clicked");
     }
 
     /**
