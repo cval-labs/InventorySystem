@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -21,11 +22,14 @@
                <children>
                   <Label text="Modify Part">
                      <font>
-                        <Font name="Silom" size="18.0" />
+                        <Font name="Silom" size="17.0" />
                      </font>
                   </Label>
-                  <RadioButton fx:id="modifyPartInHouseButton" mnemonicParsing="false" text="In-House" />
-                  <RadioButton fx:id="modifyPartOutsourcedButton" mnemonicParsing="false" text="Outsourced" />
+                  <RadioButton fx:id="modifyPartInHouseButton" mnemonicParsing="false" text="In-House">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="modifyPartTG" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton fx:id="modifyPartOutsourcedButton" mnemonicParsing="false" text="Outsourced" toggleGroup="$modifyPartTG" />
                </children>
             </HBox>
             <GridPane vgap="10.0">
