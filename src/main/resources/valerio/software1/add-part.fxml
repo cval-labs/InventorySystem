@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -18,8 +19,11 @@
       </Label>
       <HBox layoutX="257.0" layoutY="57.0" prefHeight="25.0" prefWidth="260.0" spacing="20.0">
          <children>
-            <RadioButton fx:id="addPartInHouseButton" mnemonicParsing="false" text="In-House" />
-            <RadioButton fx:id="addPartOutsourcedButton" mnemonicParsing="false" text="Outsourced" />
+            <RadioButton fx:id="addPartInHouseButton" mnemonicParsing="false" text="In-House">
+               <toggleGroup>
+                  <ToggleGroup fx:id="addPartTG" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="addPartOutsourcedButton" mnemonicParsing="false" text="Outsourced" toggleGroup="$addPartTG" />
          </children>
       </HBox>
       <VBox layoutX="36.0" layoutY="112.0" prefHeight="256.0" prefWidth="511.0">
