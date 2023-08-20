@@ -17,6 +17,9 @@ import java.util.ResourceBundle;
 
 public class AddPartController implements Initializable {
 
+    Stage stage;
+    Parent scene;
+
     @FXML
     private TextField addPartIdText;
 
@@ -44,8 +47,6 @@ public class AddPartController implements Initializable {
     @FXML
     private TextField addPartPriceText;
 
-    Stage stage;
-    Parent scene;
     @FXML
     void onActionCancelAddedPart(ActionEvent event) throws IOException {
         stage = (Stage)((Button)event.getSource()).getScene().getWindow();

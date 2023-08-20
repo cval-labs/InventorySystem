@@ -18,6 +18,9 @@ import java.util.ResourceBundle;
 
 public class AddProductController implements Initializable {
 
+    Stage stage;
+    Parent scene;
+
     @FXML
     private TableColumn<?, ?> addProdAddInvLevel;
 
@@ -65,9 +68,6 @@ public class AddProductController implements Initializable {
 
     @FXML
     private TextField addProdSearch;
-
-    Stage stage;
-    Parent scene;
 
     @FXML
     void OnActionRemoveAssociatedPart(ActionEvent event) {

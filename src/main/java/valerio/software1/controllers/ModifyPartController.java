@@ -16,6 +16,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ModifyPartController implements Initializable {
+
+    Stage stage;
+    Parent scene;
+
     @FXML
     private TextField modifyPartIdText;
 
@@ -42,10 +46,6 @@ public class ModifyPartController implements Initializable {
 
     @FXML
     private TextField modifyPartPriceText;
-
-    Stage stage;
-    Parent scene;
-
 
     @FXML
     void onActionCancelModifyPart(ActionEvent event) throws IOException {

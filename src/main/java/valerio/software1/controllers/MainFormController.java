@@ -14,6 +14,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainFormController implements Initializable {
+
+    Stage stage;
+    Parent scene;
+
     @FXML
     private TableColumn<?, ?> mainPartIdCol;
 
@@ -49,10 +53,6 @@ public class MainFormController implements Initializable {
 
     @FXML
     private TableView<?> mainProductTV;
-
-    Stage stage;
-    Parent scene;
-
 
     @FXML
     void onActionExit(ActionEvent event) {

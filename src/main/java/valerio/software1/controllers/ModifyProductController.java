@@ -17,6 +17,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ModifyProductController implements Initializable {
+
+    Stage stage;
+    Parent scene;
+
     @FXML
     private TableColumn<?, ?> modProdAddInvLevel;
 
@@ -67,9 +71,6 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     private TextField modProdSearch;
-
-    Stage stage;
-    Parent scene;
 
     @FXML
     void onActionAddModProduct(ActionEvent event) {
