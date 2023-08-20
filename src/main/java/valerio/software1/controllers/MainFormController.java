@@ -56,8 +56,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     void onActionExit(ActionEvent event) {
-        // TODO: add here
-        System.out.println("Exit button clicked");
+        System.exit(0);
     }
 
     // Parts Methods
@@ -67,8 +66,6 @@ public class MainFormController implements Initializable {
         scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/add-part.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
-
-        System.out.println("Add Part button clicked");
     }
 
     @FXML
@@ -83,7 +80,6 @@ public class MainFormController implements Initializable {
         scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/modify-part.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
-        System.out.println("Modify Part button clicked");
     }
 
     // Product Methods
@@ -93,7 +89,6 @@ public class MainFormController implements Initializable {
         scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/add-product.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
-        System.out.println("Add Product button clicked");
     }
 
     @FXML
@@ -108,7 +103,6 @@ public class MainFormController implements Initializable {
         scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/modify-product.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
-        System.out.println("Modify Product button clicked");
     }
 
     /**
