@@ -7,4 +7,6 @@ module valerio.software1 {
     exports valerio.software1;
     exports valerio.software1.controllers;
     opens valerio.software1.controllers to javafx.fxml;
+    exports valerio.software1.model;
+    opens valerio.software1.model to javafx.fxml;
 }
