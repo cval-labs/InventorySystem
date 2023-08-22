@@ -57,7 +57,7 @@ public class ModifyPartController implements Initializable {
 
     @FXML
     void onActionSaveModifyPart(ActionEvent event) {
-
+        // TODO: onActionSaveModifyPart
     }
 
     /**
@@ -66,6 +66,6 @@ public class ModifyPartController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // TODO: initialize
     }
 }

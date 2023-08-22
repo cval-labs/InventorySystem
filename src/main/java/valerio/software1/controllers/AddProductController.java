@@ -71,12 +71,12 @@ public class AddProductController implements Initializable {
 
     @FXML
     void OnActionRemoveAssociatedPart(ActionEvent event) {
-
+        // TODO: OnActionRemoveAssociatedPart
     }
 
     @FXML
     void onActionAddPart(ActionEvent event) {
-
+        // TODO: onActionAddPart
     }
 
     @FXML
@@ -89,7 +89,7 @@ public class AddProductController implements Initializable {
 
     @FXML
     void onActionSaveAddProduct(ActionEvent event) {
-
+        // TODO: onActionSaveAddPart
     }
 
     /**
@@ -98,6 +98,6 @@ public class AddProductController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // TODO: initialize
     }
 }

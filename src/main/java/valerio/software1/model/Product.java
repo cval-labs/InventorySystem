@@ -36,7 +36,6 @@ public class Product {
     }
 
     /**
-     *
      * @return the product's name
      */
     public String getName() {

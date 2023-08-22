@@ -74,7 +74,7 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     void onActionAddModProduct(ActionEvent event) {
-
+        // TODO: onActionAddModProduct
     }
 
     @FXML
@@ -87,12 +87,12 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     void onActionRemovePartModProduct(ActionEvent event) {
-
+        // TODO: onActionRemovePartModProduct
     }
 
     @FXML
     void onActionSaveModifyProduct(ActionEvent event) {
-
+        // TODO: onActionSaveModifyProduct
     }
 
     /**
@@ -101,6 +101,6 @@ public class ModifyProductController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // TODO: intialize
     }
 }

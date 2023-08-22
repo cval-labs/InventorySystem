@@ -26,6 +26,7 @@ public class Inventory {
      * @return
      */
     public static Part lookupPart(int partId) {
+        // TODO: fix Part lookupPart
         return null;
     }
 
@@ -34,6 +35,7 @@ public class Inventory {
      * @return
      */
     public static Product lookupProduct(int productId) {
+        // TODO: fix Product lookupProduct
         return null;
     }
 
@@ -42,6 +44,7 @@ public class Inventory {
      * @return
      */
     public static ObservableList<Part> lookupPart(String partName) {
+        // TODO: fix OL<Part> lookupPart
         return null;
     }
 
@@ -50,6 +53,7 @@ public class Inventory {
      * @return
      */
     public static ObservableList<Product> lookupProduct(String productName) {
+        // TODO: fix OL<Product> lookupProduct
         return null;
     }
 
@@ -58,7 +62,7 @@ public class Inventory {
      * @param selectedPart
      */
     public static void updatePart(int index, Part selectedPart) {
-        //TODO:
+        //TODO: updatePart
     }
 
     /**
@@ -66,7 +70,7 @@ public class Inventory {
      * @param selectedProduct
      */
     public static void updateProduct(int index, Product selectedProduct) {
-        //TODO:
+        //TODO: updateProduct
     }
 
     /**

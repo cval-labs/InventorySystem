@@ -70,7 +70,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     void onActionDeletePart(ActionEvent event) {
-        // TODO: add here
+        // TODO: onActionDeletePart
         System.out.println("Delete Part button clicked");
     }
 
@@ -93,7 +93,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     void onActionDeleteProduct(ActionEvent event) {
-        // TODO: add here
+        // TODO: onActionDeleteProduct
         System.out.println("Delete Product button clicked");
     }
 
@@ -111,6 +111,6 @@ public class MainFormController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // TODO: initialize
     }
 }
