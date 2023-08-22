@@ -115,7 +115,7 @@ public class MainFormController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // TODO: initialize
+
         mainPartTV.setItems(Inventory.getAllParts());
         mainPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         mainPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));

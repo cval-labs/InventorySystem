@@ -59,6 +59,14 @@ public class AddPartController implements Initializable {
     @FXML
     void onActionSaveAddedPart(ActionEvent event) {
         // TODO: onActionSaveAddedPart
+        int id = Integer.parseInt(addPartIdText.getText());
+        String name = addPartNameText.getText();
+        int inventory = Integer.parseInt(addPartInvText.getText());
+        double price = Double.parseDouble(addPartPriceText.getText());
+        int max = Integer.parseInt(addPartMaxText.getText());
+        int min = Integer.parseInt(addPartMinText.getText());
+        int machineId = Integer.parseInt(addPartMachineIdText.getText());
+
     }
 
     /**
