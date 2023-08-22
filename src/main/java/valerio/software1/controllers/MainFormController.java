@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import valerio.software1.model.Part;
+import valerio.software1.model.Product;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,40 +21,40 @@ public class MainFormController implements Initializable {
     Parent scene;
 
     @FXML
-    private TableColumn<?, ?> mainPartIdCol;
+    private TableColumn<Part, Integer> mainPartIdCol;
 
     @FXML
-    private TableColumn<?, ?> mainPartInvLevelCol;
+    private TableColumn<Part, Integer> mainPartInvLevelCol;
 
     @FXML
-    private TableColumn<?, ?> mainPartNameCol;
+    private TableColumn<Part, String> mainPartNameCol;
 
     @FXML
-    private TableColumn<?, ?> mainPartPriceCol;
+    private TableColumn<Part, Double> mainPartPriceCol;
 
     @FXML
     private TextField mainPartSearch;
 
     @FXML
-    private TableView<?> mainPartTV;
+    private TableView<Part> mainPartTV;
 
     @FXML
-    private TableColumn<?, ?> mainProdIdCol;
+    private TableColumn<Product, Integer> mainProdIdCol;
 
     @FXML
-    private TableColumn<?, ?> mainProdInvLevelCol;
+    private TableColumn<Product, Integer> mainProdInvLevelCol;
 
     @FXML
-    private TableColumn<?, ?> mainProdNameCol;
+    private TableColumn<Product, String> mainProdNameCol;
 
     @FXML
-    private TableColumn<?, ?> mainProdPriceCol;
+    private TableColumn<Product, Double> mainProdPriceCol;
 
     @FXML
     private TextField mainProductSearch;
 
     @FXML
-    private TableView<?> mainProductTV;
+    private TableView<Product> mainProductTV;
 
     @FXML
     void onActionExit(ActionEvent event) {
