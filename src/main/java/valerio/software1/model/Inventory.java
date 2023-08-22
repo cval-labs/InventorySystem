@@ -89,14 +89,14 @@ public class Inventory {
      * @return
      */
     public static ObservableList<Part> getAllParts(){
-        return null;
+        return allParts;
     }
 
     /**
      * @return
      */
     public static ObservableList<Product> getAllProducts() {
-        return null;
+        return allProducts;
     }
 
 }

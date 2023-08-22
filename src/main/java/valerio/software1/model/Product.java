@@ -125,7 +125,7 @@ public class Product {
      * @return
      */
     public ObservableList<Part> getAllAssociatedParts() {
-        return null;
+        return associatedParts;
     }
 
 }
