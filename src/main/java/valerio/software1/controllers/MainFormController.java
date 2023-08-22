@@ -7,7 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import valerio.software1.model.Inventory;
 import valerio.software1.model.Part;
 import valerio.software1.model.Product;
 
@@ -114,5 +116,17 @@ public class MainFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // TODO: initialize
+        mainPartTV.setItems(Inventory.getAllParts());
+        mainPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        mainPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        mainPartInvLevelCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        mainPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        mainProductTV.setItems(Inventory.getAllProducts());
+        mainProdIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        mainProdNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        mainProdInvLevelCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        mainProdPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
     }
 }
