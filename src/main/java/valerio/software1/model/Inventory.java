@@ -45,7 +45,15 @@ public class Inventory {
      */
     public static ObservableList<Part> lookupPart(String partName) {
         // TODO: fix OL<Part> lookupPart
-        return null;
+        ObservableList<Part> namedPart = FXCollections.observableArrayList();
+
+        for(Part part : allParts) {
+            if(part.getName().contains(partName)){
+                namedPart.add(part);
+            }
+        }
+
+        return namedPart;
     }
 
     /**
