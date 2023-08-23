@@ -1,5 +1,6 @@
 package valerio.software1.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import valerio.software1.model.Inventory;
 import valerio.software1.model.Part;
@@ -107,6 +109,21 @@ public class MainFormController implements Initializable {
         scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/modify-product.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
+    }
+
+    @FXML
+    void partsSearch(ActionEvent event) {
+        // TODO: fix, integers don't work
+        String search = mainPartSearch.getText();
+
+        ObservableList<Part> parts = Inventory.lookupPart(search);
+        mainPartTV.setItems(parts);
+        mainPartSearch.setText("");
+    }
+
+    @FXML
+    void productSearch(ActionEvent event) {
+
     }
 
     /**
