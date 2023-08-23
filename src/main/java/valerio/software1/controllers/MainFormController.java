@@ -117,12 +117,14 @@ public class MainFormController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         mainPartTV.setItems(Inventory.getAllParts());
+
         mainPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         mainPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         mainPartInvLevelCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         mainPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         mainProductTV.setItems(Inventory.getAllProducts());
+
         mainProdIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         mainProdNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         mainProdInvLevelCol.setCellValueFactory(new PropertyValueFactory<>("stock"));

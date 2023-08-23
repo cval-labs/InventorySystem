@@ -22,7 +22,7 @@ public class Inventory {
     }
 
     /**
-     * @param partId
+     * @param partId the part id to look up
      * @return
      */
     public static Part lookupPart(int partId) {
@@ -31,7 +31,7 @@ public class Inventory {
     }
 
     /**
-     * @param productId
+     * @param productId the product id to look up
      * @return
      */
     public static Product lookupProduct(int productId) {
@@ -40,7 +40,7 @@ public class Inventory {
     }
 
     /**
-     * @param partName
+     * @param partName the part name to look up
      * @return
      */
     public static ObservableList<Part> lookupPart(String partName) {
@@ -49,7 +49,7 @@ public class Inventory {
     }
 
     /**
-     * @param productName
+     * @param productName the product name to look up
      * @return
      */
     public static ObservableList<Product> lookupProduct(String productName) {
