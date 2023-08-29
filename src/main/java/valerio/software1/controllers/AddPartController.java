@@ -6,12 +6,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import valerio.software1.model.InHouse;
 import valerio.software1.model.Inventory;
+import valerio.software1.model.Outsourced;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,6 +25,8 @@ public class AddPartController implements Initializable {
     Stage stage;
     Parent scene;
 
+    public Label machineIdToCompName;
+
     @FXML
     private TextField addPartIdText;
 
@@ -33,7 +37,7 @@ public class AddPartController implements Initializable {
     private TextField addPartInvText;
 
     @FXML
-    private TextField addPartMachineIdText;
+    private TextField textIdAndCompName;
 
     @FXML
     private TextField addPartMaxText;
@@ -60,28 +64,30 @@ public class AddPartController implements Initializable {
     }
 
     public void onInHouse(ActionEvent actionEvent) {
+        machineIdToCompName.setText("Machine ID");
     }
 
     public void onOutsourced(ActionEvent actionEvent) {
+        machineIdToCompName.setText("Company Name");
     }
 
     @FXML
     void onActionSaveAddedPart(ActionEvent event) throws IOException {
-        // TODO: add companyName for Outsourced radio button
         int id = Integer.parseInt(addPartIdText.getText());
         String name = addPartNameText.getText();
         int stock = Integer.parseInt(addPartInvText.getText());
         double price = Double.parseDouble(addPartPriceText.getText());
         int max = Integer.parseInt(addPartMaxText.getText());
         int min = Integer.parseInt(addPartMinText.getText());
-        int machineId = Integer.parseInt(addPartMachineIdText.getText());
-        /* TODO: 2 if-statements? one for In-House, other for Outsourced?
-        boolean isInHouse;
-        if (addPartInHouseButton.isSelected())
-            isInHouse = true;
-        else
-            isInHouse = false;*/
-        Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
+
+        if (addPartInHouseButton.isSelected()) {
+            int machineId = Integer.parseInt(textIdAndCompName.getText());
+            Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
+        }
+        else if (addPartOutsourcedButton.isSelected()){
+            String companyName = textIdAndCompName.getText();
+            Inventory.addPart(new Outsourced(id, name, price, stock, min, max, companyName));
+        }
 
         stage = (Stage)((Button)event.getSource()).getScene().getWindow();
         scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
@@ -90,12 +96,10 @@ public class AddPartController implements Initializable {
     }
 
     /**
-     * @param url
-     * @param resourceBundle
+     * initializes the controller
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // TODO: initialize
     }
 
 }
