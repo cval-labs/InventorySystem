@@ -99,8 +99,15 @@ public class MainFormController implements Initializable {
 
     @FXML
     void onActionDeleteProduct(ActionEvent event) {
-        // TODO: onActionDeleteProduct
-        System.out.println("Delete Product button clicked");
+        // retrieves selected product
+        Product selectedProduct = mainProductTV.getSelectionModel().getSelectedItem();
+
+        if (selectedProduct != null) {
+            Inventory.deleteProduct(selectedProduct);
+        } else {
+            System.out.println("Product not selected");
+        }
+
     }
 
     @FXML

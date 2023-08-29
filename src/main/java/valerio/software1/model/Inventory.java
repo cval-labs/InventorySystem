@@ -3,6 +3,8 @@ package valerio.software1.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.Objects;
+
 public class Inventory {
     private static ObservableList<Part> allParts = FXCollections.observableArrayList();
     private static ObservableList<Product> allProducts = FXCollections.observableArrayList();
@@ -114,7 +116,13 @@ public class Inventory {
      * @return true if deleted, else false
      */
     public static boolean deleteProduct(Product selectedProduct) {
-        // TODO: deleteProduct
+        // TODO: FIX deleteProduct - "Return value of the method is never used"
+        for(Product product : allProducts) {
+            if(product.getId() == selectedProduct.getId()){
+                return getAllProducts().remove(selectedProduct);
+            }
+        }
+
         return false;
     }
 
