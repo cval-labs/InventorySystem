@@ -65,7 +65,7 @@ public class MainFormController implements Initializable {
         System.exit(0);
     }
 
-    // Parts Methods
+    // PARTS METHODS
     @FXML
     void onActionAddPart(ActionEvent event) throws IOException {
         stage = (Stage)((Button)event.getSource()).getScene().getWindow();
@@ -76,8 +76,20 @@ public class MainFormController implements Initializable {
 
     @FXML
     void onActionDeletePart(ActionEvent event) {
-        // TODO: onActionDeletePart
-        System.out.println("Delete Part button clicked");
+
+        Part selectedPart = mainPartTV.getSelectionModel().getSelectedItem();
+
+        if(selectedPart != null) {
+            boolean deletedPart = Inventory.deletePart(selectedPart);
+
+            if(deletedPart){
+                System.out.println("Deleted!");
+            } else {
+                System.out.println("Not deleted!");
+            }
+        } else {
+            System.out.println("Part not selected");
+        }
     }
 
     @FXML
@@ -88,7 +100,7 @@ public class MainFormController implements Initializable {
         stage.show();
     }
 
-    // Product Methods
+    // PRODUCT METHODS
     @FXML
     void onActionAddProduct(ActionEvent event) throws IOException {
         stage = (Stage)((Button)event.getSource()).getScene().getWindow();
@@ -183,8 +195,7 @@ public class MainFormController implements Initializable {
     }
 
     /**
-     * @param url
-     * @param resourceBundle
+     * initializes the controller
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

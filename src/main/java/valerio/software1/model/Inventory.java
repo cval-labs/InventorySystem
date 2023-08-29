@@ -107,7 +107,12 @@ public class Inventory {
      * @return true if deleted, else false
      */
     public static boolean deletePart(Part selectedPart) {
-        // TODO: deletePart
+
+        for(Part part : allParts){
+            if(part.getId() == selectedPart.getId()){
+                return getAllParts().remove(selectedPart);
+            }
+        }
         return false;
     }
 
