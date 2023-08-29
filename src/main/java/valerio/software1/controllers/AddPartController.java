@@ -59,6 +59,12 @@ public class AddPartController implements Initializable {
 
     }
 
+    public void onInHouse(ActionEvent actionEvent) {
+    }
+
+    public void onOutsourced(ActionEvent actionEvent) {
+    }
+
     @FXML
     void onActionSaveAddedPart(ActionEvent event) throws IOException {
         // TODO: add companyName for Outsourced radio button
@@ -91,4 +97,5 @@ public class AddPartController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // TODO: initialize
     }
+
 }
