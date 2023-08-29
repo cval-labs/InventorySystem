@@ -19,7 +19,7 @@
       </Label>
       <HBox layoutX="257.0" layoutY="57.0" prefHeight="25.0" prefWidth="260.0" spacing="20.0">
          <children>
-            <RadioButton fx:id="addPartInHouseButton" mnemonicParsing="false" text="In-House">
+            <RadioButton fx:id="addPartInHouseButton" mnemonicParsing="false" selected="true" text="In-House">
                <toggleGroup>
                   <ToggleGroup fx:id="addPartTG" />
                </toggleGroup></RadioButton>
