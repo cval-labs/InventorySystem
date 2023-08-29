@@ -44,7 +44,7 @@ public class Inventory {
      * @return
      */
     public static ObservableList<Part> lookupPart(String partName) {
-        // TODO: lookupPart - integers don't work and text must match name exactly
+        // TODO: lookupPart - text must match name exactly
         ObservableList<Part> namedPart = FXCollections.observableArrayList();
 
         for(Part part : allParts) {
@@ -61,7 +61,7 @@ public class Inventory {
      * @return
      */
     public static ObservableList<Product> lookupProduct(String productName) {
-        // TODO: lookupProduct - integers don't work and text must match name exactly
+        // TODO: lookupProduct - text must match name exactly
         ObservableList<Product> namedProduct = FXCollections.observableArrayList();
 
         for(Product product : allProducts) {
@@ -93,6 +93,7 @@ public class Inventory {
      * @return true if deleted, else false
      */
     public static boolean deletePart(Part selectedPart) {
+        // TODO: deletePart
         return false;
     }
 
@@ -101,6 +102,7 @@ public class Inventory {
      * @return true if deleted, else false
      */
     public static boolean deleteProduct(Product selectedProduct) {
+        // TODO: deleteProduct
         return false;
     }
 
