@@ -26,7 +26,13 @@ public class Inventory {
      * @return
      */
     public static Part lookupPart(int partId) {
-        // TODO: fix Part lookupPart
+        for(Part part : allParts){
+            if(part.getId() == partId) {
+                return part;
+            }
+        }
+
+        // returns null if no matching IDs are found
         return null;
     }
 
@@ -35,7 +41,13 @@ public class Inventory {
      * @return
      */
     public static Product lookupProduct(int productId) {
-        // TODO: fix Product lookupProduct
+        for(Product product : allProducts) {
+            if(product.getId() == productId){
+                return product;
+            }
+        }
+
+        // returns null if no matching IDs are found
         return null;
     }
 
@@ -44,7 +56,7 @@ public class Inventory {
      * @return
      */
     public static ObservableList<Part> lookupPart(String partName) {
-        // TODO: lookupPart - text must match name exactly
+        // TODO: FIX lookupPart - text must match name exactly
         ObservableList<Part> namedPart = FXCollections.observableArrayList();
 
         for(Part part : allParts) {
@@ -61,7 +73,7 @@ public class Inventory {
      * @return
      */
     public static ObservableList<Product> lookupProduct(String productName) {
-        // TODO: lookupProduct - text must match name exactly
+        // TODO: FIX lookupProduct - text must match name exactly
         ObservableList<Product> namedProduct = FXCollections.observableArrayList();
 
         for(Product product : allProducts) {
@@ -85,7 +97,7 @@ public class Inventory {
      * @param selectedProduct
      */
     public static void updateProduct(int index, Product selectedProduct) {
-        //TODO: updateProduct
+        // TODO: updateProduct
     }
 
     /**

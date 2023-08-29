@@ -113,22 +113,49 @@ public class MainFormController implements Initializable {
 
     @FXML
     void partsSearch(ActionEvent event) {
-        // TODO: check Inventory.lookupPart (integers don't work and text must match name exactly)
-
         String search = mainPartSearch.getText();
 
         ObservableList<Part> parts = Inventory.lookupPart(search);
+
+        if (parts.size() == 0) {
+            try {
+                int partId = Integer.parseInt(search);
+                Part partToSearch = Inventory.lookupPart(partId);
+
+                if (partToSearch != null) {
+                    parts.add(partToSearch);
+                }
+            }
+            catch (NumberFormatException e) {
+                // ignore
+            }
+
+        }
+
         mainPartTV.setItems(parts);
         mainPartSearch.setText("");
     }
 
     @FXML
     void productSearch(ActionEvent event) {
-        // TODO: check Inventory.lookupProduct (integers don't work and text must match name exactly)
-
         String prodSearch = mainProductSearch.getText();
 
         ObservableList<Product> products = Inventory.lookupProduct(prodSearch);
+
+        if (products.size() == 0){
+            try {
+                int productId = Integer.parseInt(prodSearch);
+                Product prodToSearch = Inventory.lookupProduct(productId);
+
+                if (prodToSearch != null) {
+                    products.add(prodToSearch);
+                }
+            }
+            catch(NumberFormatException e) {
+                // ignore
+            }
+        }
+
         mainProductTV.setItems(products);
         mainProductSearch.setText("");
 
