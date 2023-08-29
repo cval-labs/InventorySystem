@@ -63,11 +63,13 @@ public class AddPartController implements Initializable {
 
     }
 
-    public void onInHouse(ActionEvent actionEvent) {
+    @FXML
+    void onInHouse(ActionEvent actionEvent) {
         machineIdToCompName.setText("Machine ID");
     }
 
-    public void onOutsourced(ActionEvent actionEvent) {
+    @FXML
+    void onOutsourced(ActionEvent actionEvent) {
         machineIdToCompName.setText("Company Name");
     }
 
