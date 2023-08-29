@@ -25,7 +25,8 @@ public class AddPartController implements Initializable {
     Stage stage;
     Parent scene;
 
-    public Label machineIdToCompName;
+    @FXML
+    private Label machineIdToCompName;
 
     @FXML
     private TextField addPartIdText;

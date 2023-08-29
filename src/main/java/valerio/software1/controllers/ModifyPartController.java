@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -19,6 +20,9 @@ public class ModifyPartController implements Initializable {
 
     Stage stage;
     Parent scene;
+
+    @FXML
+    private Label machineIdToCompName;
 
     @FXML
     private TextField modifyPartIdText;
@@ -48,6 +52,16 @@ public class ModifyPartController implements Initializable {
     private TextField modifyPartPriceText;
 
     @FXML
+    void onInHouse(ActionEvent actionEvent) {
+        machineIdToCompName.setText("Machine ID");
+    }
+
+    @FXML
+    void onOutsourced(ActionEvent actionEvent) {
+        machineIdToCompName.setText("Company Name");
+    }
+
+    @FXML
     void onActionCancelModifyPart(ActionEvent event) throws IOException {
         stage = (Stage)((Button)event.getSource()).getScene().getWindow();
         scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/main-form.fxml"));
@@ -61,11 +75,9 @@ public class ModifyPartController implements Initializable {
     }
 
     /**
-     * @param url
-     * @param resourceBundle
+     * initializes the controller
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // TODO: initialize
     }
 }
