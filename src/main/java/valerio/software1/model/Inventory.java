@@ -44,7 +44,7 @@ public class Inventory {
      * @return
      */
     public static ObservableList<Part> lookupPart(String partName) {
-        // TODO: fix OL<Part> lookupPart
+        // TODO: lookupPart - integers don't work and text must match name exactly
         ObservableList<Part> namedPart = FXCollections.observableArrayList();
 
         for(Part part : allParts) {
@@ -61,8 +61,15 @@ public class Inventory {
      * @return
      */
     public static ObservableList<Product> lookupProduct(String productName) {
-        // TODO: fix OL<Product> lookupProduct
-        return null;
+        // TODO: lookupProduct - integers don't work and text must match name exactly
+        ObservableList<Product> namedProduct = FXCollections.observableArrayList();
+
+        for(Product product : allProducts) {
+            if(product.getName().contains(productName)){
+                namedProduct.add(product);
+            }
+        }
+        return namedProduct;
     }
 
     /**
