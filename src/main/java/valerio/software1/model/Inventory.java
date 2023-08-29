@@ -116,10 +116,11 @@ public class Inventory {
      * @return true if deleted, else false
      */
     public static boolean deleteProduct(Product selectedProduct) {
-        // TODO: FIX deleteProduct - "Return value of the method is never used"
+
         for(Product product : allProducts) {
             if(product.getId() == selectedProduct.getId()){
                 return getAllProducts().remove(selectedProduct);
+
             }
         }
 

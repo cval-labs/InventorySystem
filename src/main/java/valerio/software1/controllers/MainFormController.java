@@ -102,8 +102,22 @@ public class MainFormController implements Initializable {
         // retrieves selected product
         Product selectedProduct = mainProductTV.getSelectionModel().getSelectedItem();
 
+//        if (selectedProduct != null) {
+//            Inventory.deleteProduct(selectedProduct);
+//        } else {
+//            System.out.println("Product not selected");
+//        }
+
         if (selectedProduct != null) {
-            Inventory.deleteProduct(selectedProduct);
+            // boolean variable holds true or false value from deleteProduct
+            // above if-else doesn't make use of false value
+            boolean deleted = Inventory.deleteProduct(selectedProduct);
+
+            if(deleted){
+                System.out.println("Deleted!");
+            } else {
+                System.out.println("Not deleted!");
+            }
         } else {
             System.out.println("Product not selected");
         }
