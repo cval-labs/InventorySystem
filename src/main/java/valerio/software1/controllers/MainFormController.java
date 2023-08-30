@@ -94,6 +94,8 @@ public class MainFormController implements Initializable {
 
     @FXML
     void onActionModifyPart(ActionEvent event) throws IOException {
+        //Part selectedPart = mainPartTV.getSelectionModel().getSelectedItem();
+
         stage = (Stage)((Button)event.getSource()).getScene().getWindow();
         scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/modify-part.fxml"));
         stage.setScene(new Scene(scene));
