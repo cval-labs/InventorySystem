@@ -11,6 +11,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import valerio.software1.model.InHouse;
+import valerio.software1.model.Inventory;
+import valerio.software1.model.Outsourced;
 
 import java.io.IOException;
 import java.net.URL;
@@ -71,7 +74,21 @@ public class ModifyPartController implements Initializable {
 
     @FXML
     void onActionSaveModifyPart(ActionEvent event) {
-        // TODO: onActionSaveModifyPart
+
+        int id = Integer.parseInt(modifyPartIdText.getText());
+        String name = modifyPartNameText.getText();
+        int stock = Integer.parseInt(modifyPartInvText.getText());
+        double price = Double.parseDouble(modifyPartPriceText.getText());
+        int max = Integer.parseInt(modifyPartMaxText.getText());
+        int min = Integer.parseInt(modifyPartMinText.getText());
+
+        if(modifyPartInHouseButton.isSelected()){
+            int machineId = Integer.parseInt(modifyPartMachineIdText.getText());
+           // TODO: Index?? Inventory.updatePart(, new InHouse(id, name, price, stock, min, max, machineId));
+        } else if (modifyPartOutsourcedButton.isSelected()){
+            String companyName = modifyPartMachineIdText.getText();
+           // TODO: Index?? Inventory.updatePart(, new Outsourced(id, name, price, stock, min, max, companyName));
+        }
     }
 
     /**

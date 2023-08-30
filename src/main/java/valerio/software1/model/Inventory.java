@@ -92,6 +92,7 @@ public class Inventory {
      */
     public static void updatePart(int index, Part selectedPart) {
         //TODO: updatePart
+        allParts.set(index, selectedPart);
     }
 
     /**
