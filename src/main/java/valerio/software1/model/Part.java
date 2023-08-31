@@ -1,5 +1,6 @@
-package valerio.software1.model; /**
-* Supplied class Part.java 
+package valerio.software1.model;
+/**
+ * Supplied class Part.java
  */
 
 /**

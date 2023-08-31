@@ -117,6 +117,13 @@ public class Product {
      * @return true if part is deleted, else false
      */
     public boolean deleteAssociatedPart(Part selectedAssociatedPart) {
+        for(Part part : associatedParts) {
+            if(part.getId() == selectedAssociatedPart.getId()){
+                return getAllAssociatedParts().remove(selectedAssociatedPart);
+
+            }
+        }
+
         return false;
     }
 

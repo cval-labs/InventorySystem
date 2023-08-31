@@ -25,7 +25,7 @@ public class Inventory {
 
     /**
      * @param partId the part id to look up
-     * @return
+     * @return part, else null
      */
     public static Part lookupPart(int partId) {
         for(Part part : allParts){
@@ -40,7 +40,7 @@ public class Inventory {
 
     /**
      * @param productId the product id to look up
-     * @return
+     * @return product, else null
      */
     public static Product lookupProduct(int productId) {
         for(Product product : allProducts) {
@@ -55,10 +55,9 @@ public class Inventory {
 
     /**
      * @param partName the part name to look up
-     * @return
+     * @return looked up part
      */
     public static ObservableList<Part> lookupPart(String partName) {
-        // TODO: FIX lookupPart - text must match name exactly
         ObservableList<Part> namedPart = FXCollections.observableArrayList();
 
         for(Part part : allParts) {
@@ -72,10 +71,9 @@ public class Inventory {
 
     /**
      * @param productName the product name to look up
-     * @return
+     * @return looked up product
      */
     public static ObservableList<Product> lookupProduct(String productName) {
-        // TODO: FIX lookupProduct - text must match name exactly
         ObservableList<Product> namedProduct = FXCollections.observableArrayList();
 
         for(Product product : allProducts) {
@@ -87,20 +85,21 @@ public class Inventory {
     }
 
     /**
+     * TODO:
      * @param index
      * @param selectedPart
      */
     public static void updatePart(int index, Part selectedPart) {
-        //TODO: updatePart
         allParts.set(index, selectedPart);
     }
 
     /**
+     * TODO:
      * @param index
      * @param selectedProduct
      */
     public static void updateProduct(int index, Product selectedProduct) {
-        // TODO: updateProduct
+        allProducts.set(index, selectedProduct);
     }
 
     /**
