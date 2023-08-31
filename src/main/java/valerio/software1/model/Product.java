@@ -1,7 +1,7 @@
-package valerio.software1.model;
+//package valerio.software1.model;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+//import javafx.collections.FXCollections;
+//import javafx.collections.ObservableList;
 
 public class Product {
     private ObservableList<Part> associatedParts = FXCollections.observableArrayList();
@@ -117,6 +117,13 @@ public class Product {
      * @return true if part is deleted, else false
      */
     public boolean deleteAssociatedPart(Part selectedAssociatedPart) {
+
+        for(Part part : associatedParts) {
+            if(part.getId() == selectedAssociatedPart.getId()){
+                return getAllAssociatedParts().remove(selectedAssociatedPart);
+
+            }
+        }
         return false;
     }
 

@@ -1,9 +1,9 @@
-package valerio.software1.model;
+//package valerio.software1.model;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+//import javafx.collections.FXCollections;
+//import javafx.collections.ObservableList;
 
-import java.util.Objects;
+//import java.util.Objects;
 
 public class Inventory {
     private static ObservableList<Part> allParts = FXCollections.observableArrayList();

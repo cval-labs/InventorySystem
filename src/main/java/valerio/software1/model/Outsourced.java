@@ -1,4 +1,4 @@
-package valerio.software1.model;
+//package valerio.software1.model;
 
 public class Outsourced extends Part {
     private String companyName;
