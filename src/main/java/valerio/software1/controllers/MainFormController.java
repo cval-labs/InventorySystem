@@ -94,12 +94,17 @@ public class MainFormController implements Initializable {
 
     @FXML
     void onActionModifyPart(ActionEvent event) throws IOException {
-        //Part selectedPart = mainPartTV.getSelectionModel().getSelectedItem();
+        Part selectedPart = mainPartTV.getSelectionModel().getSelectedItem();
 
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/modify-part.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
+        if(selectedPart == null) {
+            // TODO: create dialogue box
+            System.out.println("Null - select a part");
+        } else {
+            stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/modify-part.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+        }
     }
 
     // PRODUCT METHODS
@@ -140,10 +145,17 @@ public class MainFormController implements Initializable {
 
     @FXML
     void onActionModifyProduct(ActionEvent event) throws IOException {
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/modify-product.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
+        Product selectedProduct = mainProductTV.getSelectionModel().getSelectedItem();
+
+        if(selectedProduct == null){
+            // TODO: create dialogue box
+            System.out.println("Null - select a product");
+        } else {
+            stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/modify-product.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+        }
     }
 
     @FXML
