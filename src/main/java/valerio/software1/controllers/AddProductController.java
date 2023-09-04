@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import valerio.software1.model.Part;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,19 +23,19 @@ public class AddProductController implements Initializable {
     Parent scene;
 
     @FXML
-    private TableColumn<?, ?> addProdAddInvLevel;
+    private TableColumn<Part, Integer> addProdAddInvLevel;
 
     @FXML
-    private TableColumn<?, ?> addProdAddPartId;
+    private TableColumn<Part, Integer> addProdAddPartId;
 
     @FXML
-    private TableColumn<?, ?> addProdAddPartName;
+    private TableColumn<Part, String> addProdAddPartName;
 
     @FXML
-    private TableColumn<?, ?> addProdAddPrice;
+    private TableColumn<Part, Double> addProdAddPrice;
 
     @FXML
-    private TableView<?> addProdAddingTableV;
+    private TableView<Part> addProdAddingTableV;
 
     @FXML
     private TextField addProdIdText;
@@ -55,16 +56,16 @@ public class AddProductController implements Initializable {
     private TextField addProdPriceText;
 
     @FXML
-    private TableColumn<?, ?> addProdRemInvLevel;
+    private TableColumn<Part, Integer> addProdRemInvLevel;
 
     @FXML
-    private TableColumn<?, ?> addProdRemPartName;
+    private TableColumn<Part, String> addProdRemPartName;
 
     @FXML
-    private TableColumn<?, ?> addProdRemPrice;
+    private TableColumn<Part, Double> addProdRemPrice;
 
     @FXML
-    private TableView<?> addProdRemovingTableV;
+    private TableView<Part> addProdRemovingTableV;
 
     @FXML
     private TextField addProdSearch;

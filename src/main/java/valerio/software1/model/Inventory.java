@@ -7,6 +7,10 @@ public class Inventory {
     private static ObservableList<Part> allParts = FXCollections.observableArrayList();
     private static ObservableList<Product> allProducts = FXCollections.observableArrayList();
 
+    static {
+        setupData();
+    }
+
     /**
      * Sets hardcoded data
      */

@@ -212,6 +212,8 @@ public class MainFormController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+       // Inventory.setupData();
+
 
         mainPartTV.setItems(Inventory.getAllParts());
 
@@ -227,7 +229,7 @@ public class MainFormController implements Initializable {
         mainProdInvLevelCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         mainProdPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        Inventory.setupData();
+
 
     }
 }
