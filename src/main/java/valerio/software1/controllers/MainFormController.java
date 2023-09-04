@@ -9,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import valerio.software1.model.Inventory;
 import valerio.software1.model.Part;
@@ -121,11 +120,11 @@ public class MainFormController implements Initializable {
         // retrieves selected product
         Product selectedProduct = mainProductTV.getSelectionModel().getSelectedItem();
 
-//        if (selectedProduct != null) {
-//            Inventory.deleteProduct(selectedProduct);
-//        } else {
-//            System.out.println("Product not selected");
-//        }
+        /*if (selectedProduct != null) {
+            Inventory.deleteProduct(selectedProduct);
+        } else {
+            System.out.println("Product not selected");
+        }*/
 
         if (selectedProduct != null) {
             // boolean variable holds true or false value from deleteProduct
@@ -227,6 +226,8 @@ public class MainFormController implements Initializable {
         mainProdNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         mainProdInvLevelCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         mainProdPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        Inventory.setupData();
 
     }
 }
