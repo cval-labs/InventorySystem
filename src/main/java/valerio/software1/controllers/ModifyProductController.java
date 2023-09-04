@@ -1,5 +1,6 @@
 package valerio.software1.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import valerio.software1.model.Inventory;
+import valerio.software1.model.Part;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,19 +25,20 @@ public class ModifyProductController implements Initializable {
     Parent scene;
 
     @FXML
-    private TableColumn<?, ?> modProdAddInvLevel;
+    private TableColumn<Part, Integer> modProdAddInvLevel;
 
     @FXML
-    private TableColumn<?, ?> modProdAddPartId;
+    private TableColumn<Part, Integer> modProdAddPartId;
 
     @FXML
-    private TableColumn<?, ?> modProdAddPartName;
+    private TableColumn<Part, String> modProdAddPartName;
 
     @FXML
-    private TableColumn<?, ?> modProdAddPrice;
+    private TableColumn<Part, Double> modProdAddPrice;
 
+    // top table
     @FXML
-    private TableView<?> modProdAddingTV;
+    private TableView<Part> modProdAddingTV;
 
     @FXML
     private TextField modProdIdText;
@@ -55,26 +59,27 @@ public class ModifyProductController implements Initializable {
     private TextField modProdPriceText;
 
     @FXML
-    private TableColumn<?, ?> modProdRemPartId;
+    private TableColumn<Part, Integer> modProdRemPartId;
 
     @FXML
-    private TableColumn<?, ?> modProdRemPartName;
+    private TableColumn<Part, String> modProdRemPartName;
 
     @FXML
-    private TableColumn<?, ?> modProdRemPrice;
+    private TableColumn<Part, Double> modProdRemPrice;
+
+    // bottom table
+    @FXML
+    private TableView<Part> modProdRemovingTV;
 
     @FXML
-    private TableView<?> modProdRemovingTV;
-
-    @FXML
-    private TableColumn<?, ?> modProdRenInvLevel;
+    private TableColumn<Part, Integer> modProdRenInvLevel;
 
     @FXML
     private TextField modProdSearch;
 
     @FXML
     void onActionAddModProduct(ActionEvent event) {
-        // TODO: onActionAddModProduct
+        // TODO: onActionAddModProduct - moves part from top tv to bottom tv
     }
 
     @FXML
@@ -87,12 +92,51 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     void onActionRemovePartModProduct(ActionEvent event) {
-        // TODO: onActionRemovePartModProduct
+        // TODO: remove associated part needs prompt
+        Part selectedPart = modProdRemovingTV.getSelectionModel().getSelectedItem();
+
+        if(selectedPart != null) {
+            boolean deletedPart = Inventory.deletePart(selectedPart);
+
+            if(deletedPart){
+                System.out.println("Deleted!");
+            } else {
+                System.out.println("Not deleted!");
+            }
+        } else {
+            System.out.println("Part not selected");
+        }
     }
 
     @FXML
     void onActionSaveModifyProduct(ActionEvent event) {
         // TODO: onActionSaveModifyProduct
+    }
+
+    @FXML
+    void partSearch(ActionEvent event) {
+        String search = modProdSearch.getText();
+
+        ObservableList<Part> parts = Inventory.lookupPart(search);
+
+        if (parts.size() == 0) {
+            try {
+                int partId = Integer.parseInt(search);
+                Part partToSearch = Inventory.lookupPart(partId);
+
+                if (partToSearch != null) {
+                    parts.add(partToSearch);
+                }
+            }
+            catch (NumberFormatException e) {
+                // ignore
+            }
+
+        }
+
+        modProdAddingTV.setItems(parts);
+        modProdSearch.setText("");
+
     }
 
     /**
