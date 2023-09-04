@@ -1,5 +1,6 @@
 package valerio.software1.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +38,7 @@ public class AddProductController implements Initializable {
     @FXML
     private TableColumn<Part, Double> addProdAddPrice;
 
+    // top table
     @FXML
     private TableView<Part> addProdAddingTableV;
 
@@ -67,6 +69,7 @@ public class AddProductController implements Initializable {
     @FXML
     private TableColumn<Part, Double> addProdRemPrice;
 
+    // bottom table
     @FXML
     private TableView<Part> addProdRemovingTableV;
 
@@ -127,9 +130,33 @@ public class AddProductController implements Initializable {
         stage.show();
     }
 
+    @FXML
+    void partSearch(ActionEvent event) {
+        String search = addProdSearch.getText();
+
+        ObservableList<Part> parts = Inventory.lookupPart(search);
+
+        if (parts.size() == 0) {
+            try {
+                int partId = Integer.parseInt(search);
+                Part partToSearch = Inventory.lookupPart(partId);
+
+                if (partToSearch != null) {
+                    parts.add(partToSearch);
+                }
+            }
+            catch (NumberFormatException e) {
+                // ignore
+            }
+
+        }
+
+        addProdAddingTableV.setItems(parts);
+        addProdSearch.setText("");
+    }
+
     /**
-     * @param url
-     * @param resourceBundle
+     * initializes the controller
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
