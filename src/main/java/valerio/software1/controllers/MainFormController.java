@@ -75,7 +75,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     void onActionDeletePart(ActionEvent event) {
-
+        // TODO: deletePart needs prompt
         Part selectedPart = mainPartTV.getSelectionModel().getSelectedItem();
 
         if(selectedPart != null) {
@@ -96,7 +96,7 @@ public class MainFormController implements Initializable {
         Part selectedPart = mainPartTV.getSelectionModel().getSelectedItem();
 
         if(selectedPart == null) {
-            // TODO: create dialogue box
+            // TODO: ModifyPart - create dialogue box for if null
             System.out.println("Null - select a part");
         } else {
             stage = (Stage)((Button)event.getSource()).getScene().getWindow();
@@ -147,7 +147,7 @@ public class MainFormController implements Initializable {
         Product selectedProduct = mainProductTV.getSelectionModel().getSelectedItem();
 
         if(selectedProduct == null){
-            // TODO: create dialogue box
+            // TODO: Modify Product - create dialogue box for if null
             System.out.println("Null - select a product");
         } else {
             stage = (Stage)((Button)event.getSource()).getScene().getWindow();

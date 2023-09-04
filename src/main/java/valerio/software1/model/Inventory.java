@@ -106,7 +106,7 @@ public class Inventory {
     }
 
     /**
-     * TODO:
+     * TODO: javadoc
      * @param index
      * @param selectedPart
      */
@@ -115,7 +115,7 @@ public class Inventory {
     }
 
     /**
-     * TODO:
+     * TODO: javadoc
      * @param index
      * @param selectedProduct
      */
