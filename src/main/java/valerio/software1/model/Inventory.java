@@ -106,21 +106,51 @@ public class Inventory {
     }
 
     /**
-     * TODO: javadoc
-     * @param index
-     * @param selectedPart
+     * @param index the part's index
+     * @param selectedPart the part to be updated
      */
     public static void updatePart(int index, Part selectedPart) {
         allParts.set(index, selectedPart);
     }
 
     /**
-     * TODO: javadoc
-     * @param index
-     * @param selectedProduct
+     * @param id the part's id
+     * @param selectedPart the part to be updated
+     */
+    public static void updatesPart(int id, Part selectedPart) {
+        int index = -1;
+
+        for (Part part : getAllParts()) {
+            index++;
+            if(part.getId() == id) {
+                getAllParts().set(index, selectedPart);
+                return;
+            }
+        }
+    }
+
+    /**
+     * @param index the product's index
+     * @param selectedProduct the product to be updated
      */
     public static void updateProduct(int index, Product selectedProduct) {
         allProducts.set(index, selectedProduct);
+    }
+
+    /**
+     * @param id the product's id
+     * @param selectedProduct the product to be updated
+     */
+    public static void updatesProduct(int id, Product selectedProduct) {
+        int index = -1;
+
+        for(Product product : getAllProducts()) {
+            index++;
+            if(product.getId() == id) {
+                getAllProducts().set(index, selectedProduct);
+                return;
+            }
+        }
     }
 
     /**

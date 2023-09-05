@@ -86,13 +86,12 @@ public class ModifyPartController implements Initializable {
 
         if(modifyPartInHouseButton.isSelected()){
             int machineId = Integer.parseInt(modifyPartMachineIdText.getText());
-           // Inventory.updatePart(, new InHouse(id, name, price, stock, min, max, machineId));
-            //TODO: FIX - duplicates, doesn't update
-            Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
+            Inventory.updatesPart(id, new InHouse(id, name, price, stock, min, max, machineId));
+           // Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
         } else if (modifyPartOutsourcedButton.isSelected()){
             String companyName = modifyPartMachineIdText.getText();
            // Inventory.updatePart(, new Outsourced(id, name, price, stock, min, max, companyName));
-            Inventory.addPart(new Outsourced(id, name, price, stock, min, max, companyName));
+            Inventory.updatesPart(id, new Outsourced(id, name, price, stock, min, max, companyName));
         }
 
         stage = (Stage)((Button)event.getSource()).getScene().getWindow();
