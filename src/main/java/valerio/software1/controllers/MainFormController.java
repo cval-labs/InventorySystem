@@ -16,6 +16,7 @@ import valerio.software1.model.Product;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainFormController implements Initializable {
@@ -75,20 +76,22 @@ public class MainFormController implements Initializable {
 
     @FXML
     void onActionDeletePart(ActionEvent event) {
-        // TODO: deletePart needs prompt
         Part selectedPart = mainPartTV.getSelectionModel().getSelectedItem();
 
-        if(selectedPart != null) {
-            boolean deletedPart = Inventory.deletePart(selectedPart);
-
-            if(deletedPart){
-                System.out.println("Deleted!");
-            } else {
-                System.out.println("Not deleted!");
-            }
+        if (selectedPart == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please select a part");
+            alert.showAndWait();
         } else {
-            System.out.println("Part not selected");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "This will be deleted! Do you want to continue?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if(result.isPresent() && result.get() == ButtonType.OK) {
+                Inventory.deletePart(selectedPart);
+            }
         }
+
     }
 
     @FXML
@@ -96,8 +99,10 @@ public class MainFormController implements Initializable {
         Part selectedPart = mainPartTV.getSelectionModel().getSelectedItem();
 
         if(selectedPart == null) {
-            // TODO: ModifyPart - create dialogue box for if null
-            System.out.println("Null - select a part");
+            // System.out.println("Null - select a part");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please select a part");
+            alert.showAndWait();
         } else {
 
             FXMLLoader loader = new FXMLLoader();
@@ -134,7 +139,7 @@ public class MainFormController implements Initializable {
             System.out.println("Product not selected");
         }*/
 
-        if (selectedProduct != null) {
+        /*if (selectedProduct != null) {
             // boolean variable holds true or false value from deleteProduct
             // above if-else doesn't make use of false value
             boolean deleted = Inventory.deleteProduct(selectedProduct);
@@ -146,6 +151,23 @@ public class MainFormController implements Initializable {
             }
         } else {
             System.out.println("Product not selected");
+        }*/
+
+        if (selectedProduct == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please select a product");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "This will be deleted! Do you want to continue?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if(result.isPresent() && result.get() == ButtonType.OK) {
+                boolean deleted = Inventory.deleteProduct(selectedProduct);
+                if(deleted){
+                    System.out.println("Successfully Deleted!");
+                }
+            }
         }
 
     }
@@ -155,8 +177,11 @@ public class MainFormController implements Initializable {
         Product selectedProduct = mainProductTV.getSelectionModel().getSelectedItem();
 
         if(selectedProduct == null){
-            // TODO: Modify Product - create dialogue box for if null
-            System.out.println("Null - select a product");
+            // System.out.println("Null - select a product");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please select a product");
+            alert.showAndWait();
+
         } else {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/valerio/software1/modify-product.fxml"));
@@ -229,7 +254,6 @@ public class MainFormController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
        // Inventory.setupData();
 
-
         mainPartTV.setItems(Inventory.getAllParts());
 
         mainPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -243,8 +267,6 @@ public class MainFormController implements Initializable {
         mainProdNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         mainProdInvLevelCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         mainProdPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
-
-
 
     }
 }

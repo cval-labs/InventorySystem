@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import valerio.software1.model.InHouse;
 import valerio.software1.model.Inventory;
@@ -19,6 +16,7 @@ import valerio.software1.model.Part;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ModifyPartController implements Initializable {
@@ -68,10 +66,18 @@ public class ModifyPartController implements Initializable {
 
     @FXML
     void onActionCancelModifyPart(ActionEvent event) throws IOException {
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/main-form.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Any modified data will not be saved! Do you want to continue?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isPresent() && result.get() == ButtonType.OK) {
+            stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/main-form.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+        }
+
     }
 
     @FXML

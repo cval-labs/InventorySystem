@@ -5,10 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import valerio.software1.model.InHouse;
@@ -18,6 +15,7 @@ import valerio.software1.model.Outsourced;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AddPartController implements Initializable {
@@ -57,10 +55,18 @@ public class AddPartController implements Initializable {
 
     @FXML
     void onActionCancelAddedPart(ActionEvent event) throws IOException {
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
-        stage.setScene(new Scene(scene));
-        stage.show();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Input data will not be saved! Do you want to continue?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isPresent() && result.get() == ButtonType.OK){
+            stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
+            stage.setScene(new Scene(scene));
+            stage.show();
+        }
+
 
     }
 
@@ -101,9 +107,13 @@ public class AddPartController implements Initializable {
             stage.show();
 
         } catch(NumberFormatException e){
-            System.out.println("Please enter valid values");
-            System.out.println("Exception: " + e);
-            System.out.println("Exception: " + e.getMessage());
+//            System.out.println("Please enter valid values");
+//            System.out.println("Exception: " + e);
+//            System.out.println("Exception: " + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialogue");
+            alert.setContentText("Please enter a valid value for each text field!");
+            alert.showAndWait();
         }
 
 
