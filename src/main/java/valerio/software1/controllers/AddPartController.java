@@ -76,26 +76,37 @@ public class AddPartController implements Initializable {
 
     @FXML
     void onActionSaveAddedPart(ActionEvent event) throws IOException {
-        int id = Integer.parseInt(addPartIdText.getText());
-        String name = addPartNameText.getText();
-        int stock = Integer.parseInt(addPartInvText.getText());
-        double price = Double.parseDouble(addPartPriceText.getText());
-        int max = Integer.parseInt(addPartMaxText.getText());
-        int min = Integer.parseInt(addPartMinText.getText());
 
-        if (addPartInHouseButton.isSelected()) {
-            int machineId = Integer.parseInt(textIdAndCompName.getText());
-            Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
-        }
-        else if (addPartOutsourcedButton.isSelected()){
-            String companyName = textIdAndCompName.getText();
-            Inventory.addPart(new Outsourced(id, name, price, stock, min, max, companyName));
+        try
+        {
+            int id = Integer.parseInt(addPartIdText.getText());
+            String name = addPartNameText.getText();
+            int stock = Integer.parseInt(addPartInvText.getText());
+            double price = Double.parseDouble(addPartPriceText.getText());
+            int max = Integer.parseInt(addPartMaxText.getText());
+            int min = Integer.parseInt(addPartMinText.getText());
+
+            if (addPartInHouseButton.isSelected()) {
+                int machineId = Integer.parseInt(textIdAndCompName.getText());
+                Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
+            }
+            else if (addPartOutsourcedButton.isSelected()){
+                String companyName = textIdAndCompName.getText();
+                Inventory.addPart(new Outsourced(id, name, price, stock, min, max, companyName));
+            }
+
+            stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
+            stage.setScene(new Scene(scene));
+            stage.show();
+
+        } catch(NumberFormatException e){
+            System.out.println("Please enter valid values");
+            System.out.println("Exception: " + e);
+            System.out.println("Exception: " + e.getMessage());
         }
 
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
-        stage.setScene(new Scene(scene));
-        stage.show();
+
     }
 
     /**

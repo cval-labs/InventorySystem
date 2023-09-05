@@ -115,19 +115,26 @@ public class AddProductController implements Initializable {
 
     @FXML
     void onActionSaveAddProduct(ActionEvent event) throws IOException {
-        int id = Integer.parseInt(addProdIdText.getText());
-        String name = addProdNameText.getText();
-        int stock = Integer.parseInt(addProdInvText.getText());
-        double price = Double.parseDouble(addProdPriceText.getText());
-        int max = Integer.parseInt(addProdMaxText.getText());
-        int min = Integer.parseInt(addProdMinText.getText());
+        try {
+            int id = Integer.parseInt(addProdIdText.getText());
+            String name = addProdNameText.getText();
+            int stock = Integer.parseInt(addProdInvText.getText());
+            double price = Double.parseDouble(addProdPriceText.getText());
+            int max = Integer.parseInt(addProdMaxText.getText());
+            int min = Integer.parseInt(addProdMinText.getText());
 
-        Inventory.addProduct(new Product(id, name, price, stock, min, max));
+            Inventory.addProduct(new Product(id, name, price, stock, min, max));
 
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
-        stage.setScene(new Scene(scene));
-        stage.show();
+            stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
+            stage.setScene(new Scene(scene));
+            stage.show();
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter valid values");
+            System.out.println("Exception: " + e);
+            System.out.println("Exception: " + e.getMessage());
+        }
+
     }
 
     @FXML
