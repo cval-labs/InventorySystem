@@ -158,8 +158,15 @@ public class MainFormController implements Initializable {
             // TODO: Modify Product - create dialogue box for if null
             System.out.println("Null - select a product");
         } else {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/valerio/software1/modify-product.fxml"));
+            loader.load();
+
+            ModifyProductController modifyProductController = loader.getController();
+            modifyProductController.moveProduct(selectedProduct);
+
             stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-            scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/modify-product.fxml"));
+            Parent scene = loader.getRoot();
             stage.setScene(new Scene(scene));
             stage.show();
         }

@@ -14,9 +14,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import valerio.software1.model.Inventory;
 import valerio.software1.model.Part;
+import valerio.software1.model.Product;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ModifyProductController implements Initializable {
@@ -109,8 +111,31 @@ public class ModifyProductController implements Initializable {
     }
 
     @FXML
-    void onActionSaveModifyProduct(ActionEvent event) {
-        // TODO: onActionSaveModifyProduct
+    void onActionSaveModifyProduct(ActionEvent event) throws IOException {
+
+        int id = Integer.parseInt(modProdIdText.getText());
+        String name = modProdNameText.getText();
+        int stock = Integer.parseInt(modProdInvText.getText());
+        double price = Double.parseDouble(modProdPriceText.getText());
+        int max = Integer.parseInt(modProdMaxText.getText());
+        int min = Integer.parseInt(modProdMinText.getText());
+
+        Inventory.updatesProduct(id, new Product(id, name, price, stock, min, max));
+
+        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+        scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
+        stage.setScene(new Scene(scene));
+        stage.show();
+    }
+
+    public void moveProduct(Product product) {
+        modProdIdText.setText(String.valueOf(product.getId()));
+        modProdNameText.setText(product.getName());
+        modProdInvText.setText(String.valueOf(product.getStock()));
+        modProdPriceText.setText(String.valueOf(product.getPrice()));
+        modProdMaxText.setText(String.valueOf(product.getMax()));
+        modProdMinText.setText(String.valueOf(product.getMin()));
+
     }
 
     @FXML
