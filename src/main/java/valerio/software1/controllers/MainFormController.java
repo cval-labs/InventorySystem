@@ -99,10 +99,18 @@ public class MainFormController implements Initializable {
             // TODO: ModifyPart - create dialogue box for if null
             System.out.println("Null - select a part");
         } else {
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/valerio/software1/modify-part.fxml"));
+            loader.load();
+
+            ModifyPartController modifyPartController = loader.getController();
+            modifyPartController.movePart(selectedPart);
+
             stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-            scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/modify-part.fxml"));
+            Parent scene = loader.getRoot();
             stage.setScene(new Scene(scene));
-            stage.show();
+            stage.show(); // .showAndWait() causes error "Cannot call this method on primary stage"
         }
     }
 

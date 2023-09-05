@@ -56,7 +56,7 @@
                   <TextField fx:id="modifyPartMaxText" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <TextField fx:id="modifyPartMinText" GridPane.columnIndex="3" GridPane.rowIndex="4" />
                   <Label fx:id="machineIdToCompName" text="Machine ID" GridPane.rowIndex="5" />
-                  <TextField fx:id="textIdToCompName" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="modifyPartMachineIdText" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
                <padding>
                   <Insets left="30.0" />

@@ -14,9 +14,11 @@ import javafx.stage.Stage;
 import valerio.software1.model.InHouse;
 import valerio.software1.model.Inventory;
 import valerio.software1.model.Outsourced;
+import valerio.software1.model.Part;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ModifyPartController implements Initializable {
@@ -55,12 +57,12 @@ public class ModifyPartController implements Initializable {
     private TextField modifyPartPriceText;
 
     @FXML
-    void onInHouse(ActionEvent actionEvent) {
+    void onInHouse() {
         machineIdToCompName.setText("Machine ID");
     }
 
     @FXML
-    void onOutsourced(ActionEvent actionEvent) {
+    void onOutsourced() {
         machineIdToCompName.setText("Company Name");
     }
 
@@ -73,7 +75,7 @@ public class ModifyPartController implements Initializable {
     }
 
     @FXML
-    void onActionSaveModifyPart(ActionEvent event) {
+    void onActionSaveModifyPart(ActionEvent event) throws IOException {
 
         int id = Integer.parseInt(modifyPartIdText.getText());
         String name = modifyPartNameText.getText();
@@ -84,11 +86,44 @@ public class ModifyPartController implements Initializable {
 
         if(modifyPartInHouseButton.isSelected()){
             int machineId = Integer.parseInt(modifyPartMachineIdText.getText());
-           // TODO: Index?? Inventory.updatePart(, new InHouse(id, name, price, stock, min, max, machineId));
+           // Inventory.updatePart(, new InHouse(id, name, price, stock, min, max, machineId));
+            //TODO: FIX - duplicates, doesn't update
+            Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
         } else if (modifyPartOutsourcedButton.isSelected()){
             String companyName = modifyPartMachineIdText.getText();
-           // TODO: Index?? Inventory.updatePart(, new Outsourced(id, name, price, stock, min, max, companyName));
+           // Inventory.updatePart(, new Outsourced(id, name, price, stock, min, max, companyName));
+            Inventory.addPart(new Outsourced(id, name, price, stock, min, max, companyName));
         }
+
+        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+        scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
+        stage.setScene(new Scene(scene));
+        stage.show();
+    }
+
+    public void movePart(Part part) {
+        modifyPartIdText.setText(String.valueOf(part.getId()));
+        modifyPartNameText.setText(part.getName());
+        modifyPartInvText.setText(String.valueOf(part.getStock()));
+        modifyPartPriceText.setText(String.valueOf(part.getPrice()));
+        modifyPartMaxText.setText(String.valueOf(part.getMax()));
+        modifyPartMinText.setText(String.valueOf(part.getMin()));
+
+        /*if(modifyPartInHouseButton.isSelected()){
+            modifyPartMachineIdText.setText(part);
+        }*/
+        if(part instanceof InHouse) {
+            modifyPartMachineIdText.setText(String.valueOf(((InHouse) part).getMachineId()));
+
+        } else if (part instanceof Outsourced) {
+
+            modifyPartOutsourcedButton.setSelected(true);
+
+            modifyPartMachineIdText.setText(((Outsourced) part).getCompanyName());
+
+
+        }
+
     }
 
     /**
