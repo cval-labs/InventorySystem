@@ -80,10 +80,10 @@ public class AddProductController implements Initializable {
 
     @FXML
     void OnActionRemoveAssociatedPart(ActionEvent event) {
-        // TODO: remove associated part needs prompt
+
         Part selectedPart = addProdRemovingTableV.getSelectionModel().getSelectedItem();
 
-        if(selectedPart != null) {
+        /*if(selectedPart != null) {
             boolean deletedPart = Inventory.deletePart(selectedPart);
 
             if(deletedPart){
@@ -93,12 +93,30 @@ public class AddProductController implements Initializable {
             }
         } else {
             System.out.println("Part not selected");
+        }*/
+
+        if (selectedPart == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please select a product");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "This part will be removed! Do you want to continue?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                Inventory.deletePart(selectedPart);
+            }
         }
+
     }
 
     @FXML
     void onActionAddPart(ActionEvent event) {
         // TODO: onActionAddPart - moves part from top tv to bottom tv
+
+
+        System.out.println("Add button clicked");
         /*int id = Integer.parseInt(addProdIdText.getText());
         String name = addProdNameText.getText();
         int stock = Integer.parseInt(addProdInvText.getText());

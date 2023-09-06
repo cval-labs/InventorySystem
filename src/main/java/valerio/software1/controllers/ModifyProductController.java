@@ -80,7 +80,7 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     void onActionAddModProduct(ActionEvent event) {
-        // TODO: onActionAddModProduct - moves part from top tv to bottom tv
+        // TODO: onActionAddModProduct - watch Working with TableViews
     }
 
     @FXML
@@ -101,20 +101,23 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     void onActionRemovePartModProduct(ActionEvent event) {
-        // TODO: remove associated part needs prompt
+
         Part selectedPart = modProdRemovingTV.getSelectionModel().getSelectedItem();
 
-        if(selectedPart != null) {
-            boolean deletedPart = Inventory.deletePart(selectedPart);
-
-            if(deletedPart){
-                System.out.println("Deleted!");
-            } else {
-                System.out.println("Not deleted!");
-            }
+        if (selectedPart == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please select a product");
+            alert.showAndWait();
         } else {
-            System.out.println("Part not selected");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "This part will be removed! Do you want to continue?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                Inventory.deletePart(selectedPart);
+            }
         }
+
     }
 
     @FXML
