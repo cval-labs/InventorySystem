@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import valerio.software1.model.Inventory;
 import valerio.software1.model.Part;
@@ -176,5 +177,18 @@ public class ModifyProductController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        modProdAddingTV.setItems(Inventory.getAllParts());
+
+        modProdAddPartId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        modProdAddPartName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        modProdAddInvLevel.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        modProdAddPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        //modProdRemovingTV.setItems(Inventory.getAllParts());
+
+        modProdRemPartId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        modProdRemPartName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        modProdRenInvLevel.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        modProdRemPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 }

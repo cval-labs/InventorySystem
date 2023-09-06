@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import valerio.software1.model.Inventory;
 import valerio.software1.model.Part;
@@ -57,6 +58,9 @@ public class AddProductController implements Initializable {
 
     @FXML
     private TextField addProdPriceText;
+
+    @FXML
+    private TableColumn<Part, Integer> addProdRemPartId;
 
     @FXML
     private TableColumn<Part, Integer> addProdRemInvLevel;
@@ -136,9 +140,13 @@ public class AddProductController implements Initializable {
             stage.setScene(new Scene(scene));
             stage.show();
         } catch (NumberFormatException e) {
-            System.out.println("Please enter valid values");
-            System.out.println("Exception: " + e);
-            System.out.println("Exception: " + e.getMessage());
+//            System.out.println("Please enter valid values");
+//            System.out.println("Exception: " + e);
+//            System.out.println("Exception: " + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialogue");
+            alert.setContentText("Please enter a valid value for each text field!");
+            alert.showAndWait();
         }
 
     }
@@ -173,7 +181,18 @@ public class AddProductController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // addProdAddingTableV.setItems(Inventory.getAllParts());
+        addProdAddingTableV.setItems(Inventory.getAllParts());
+
+        addProdAddPartId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        addProdAddPartName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        addProdAddInvLevel.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        addProdAddPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+
         //addProdRemovingTableV.setItems(Inventory.getAllParts());
+
+        addProdRemPartId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        addProdRemPartName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        addProdRemInvLevel.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        addProdRemPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 }
