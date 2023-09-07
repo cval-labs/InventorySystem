@@ -1,5 +1,6 @@
 package valerio.software1.controllers;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -78,6 +79,12 @@ public class AddProductController implements Initializable {
     @FXML
     private TextField addProdSearch;
 
+    private static ObservableList<Part> partsForProduct = FXCollections.observableArrayList();
+
+    public static ObservableList<Part> getAddedParts() {
+        return partsForProduct;
+    }
+
     @FXML
     void OnActionRemoveAssociatedPart(ActionEvent event) {
 
@@ -113,16 +120,15 @@ public class AddProductController implements Initializable {
 
     @FXML
     void onActionAddPart(ActionEvent event) {
-        // TODO: onActionAddPart - moves part from top tv to bottom tv
+        // TODO: FIX - added parts disappear
+        Part partToAdd = addProdAddingTableV.getSelectionModel().getSelectedItem();
 
+        if (partToAdd == null)
+            return;
+
+        partsForProduct.add(partToAdd);
 
         System.out.println("Add button clicked");
-        /*int id = Integer.parseInt(addProdIdText.getText());
-        String name = addProdNameText.getText();
-        int stock = Integer.parseInt(addProdInvText.getText());
-        double price = Double.parseDouble(addProdPriceText.getText());
-        int max = Integer.parseInt(addProdMaxText.getText());
-        int min = Integer.parseInt(addProdMinText.getText());*/
     }
 
     @FXML
@@ -133,6 +139,7 @@ public class AddProductController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == ButtonType.OK){
+            addProdRemovingTableV.getItems().clear();
             stage = (Stage)((Button)event.getSource()).getScene().getWindow();
             scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/main-form.fxml"));
             stage.setScene(new Scene(scene));
@@ -206,7 +213,7 @@ public class AddProductController implements Initializable {
         addProdAddInvLevel.setCellValueFactory(new PropertyValueFactory<>("stock"));
         addProdAddPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        //addProdRemovingTableV.setItems(Inventory.getAllParts());
+        addProdRemovingTableV.setItems(getAddedParts());
 
         addProdRemPartId.setCellValueFactory(new PropertyValueFactory<>("id"));
         addProdRemPartName.setCellValueFactory(new PropertyValueFactory<>("name"));
