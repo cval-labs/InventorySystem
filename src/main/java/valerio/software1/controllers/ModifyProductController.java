@@ -81,7 +81,7 @@ public class ModifyProductController implements Initializable {
 
     Product parts;
 
-    ObservableList<Part> associatedParts = FXCollections.observableArrayList();
+    public ObservableList<Part> associatedParts = FXCollections.observableArrayList();
 
     /*ObservableList<Part> partsForProduct = FXCollections.observableArrayList();
 
@@ -106,7 +106,6 @@ public class ModifyProductController implements Initializable {
     @FXML
     void onActionAddModProduct(ActionEvent event) {
         // Move parts from top table to bottom table
-
     try {
         System.out.println("add button clicked");
         Part partToAdd = (Part) modProdAddingTV.getSelectionModel().getSelectedItem();
@@ -156,20 +155,19 @@ public class ModifyProductController implements Initializable {
         int max = Integer.parseInt(modProdMaxText.getText());
         int min = Integer.parseInt(modProdMinText.getText());
 
-
         //Inventory.updatesProduct(id, new Product(id, name, price, stock, min, max));
         Product modifiedProduct = new Product(id, name, price, stock, min, max);
         for(Part addPart : associatedParts) {
             modifiedProduct.addAssociatedPart(addPart);
         }
 
-        int index = 0;
+        int index = -1;
         for(Product modProduct : Inventory.getAllProducts()) {
+            index++;
             if (modProduct.getId() == id) {
                     Inventory.updateProduct(index, modifiedProduct);
-                    break;
+                    break; // exits for-loop entirely after condition met and previous line executed, continues with code after loop
             }
-            index++;
         }
 
         stage = (Stage)((Button)event.getSource()).getScene().getWindow();
@@ -194,6 +192,9 @@ public class ModifyProductController implements Initializable {
 
     }
 
+    /**
+     * @param product the product moved from MainFormController
+     */
     public void moveProduct(Product product) {
         try {
             modProdIdText.setText(String.valueOf(product.getId()));
@@ -204,7 +205,7 @@ public class ModifyProductController implements Initializable {
             modProdMinText.setText(String.valueOf(product.getMin()));
             // partsForProduct.addAll(getAddedParts());
             //modProdRemovingTV.setItems(product.getAllAssociatedParts());
-           associatedParts.addAll(product.getAllAssociatedParts());
+            associatedParts.addAll(product.getAllAssociatedParts());
         } catch (NullPointerException e) {
             //ignore
         }
@@ -237,12 +238,10 @@ public class ModifyProductController implements Initializable {
     }
 
     /**
-     * @param url
-     * @param resourceBundle
+     * initializes the controller
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
             modProdAddingTV.setItems(Inventory.getAllParts());
 
             modProdAddPartId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -257,8 +256,5 @@ public class ModifyProductController implements Initializable {
             modProdRemPartName.setCellValueFactory(new PropertyValueFactory<>("name"));
             modProdRenInvLevel.setCellValueFactory(new PropertyValueFactory<>("stock"));
             modProdRemPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
-        } catch (NullPointerException e) {
-            // ignore
-        }
     }
 }

@@ -79,7 +79,7 @@ public class AddProductController implements Initializable {
     @FXML
     private TextField addProdSearch;
 
-    private static ObservableList<Part> partsForProduct = FXCollections.observableArrayList();
+    private static final ObservableList<Part> partsForProduct = FXCollections.observableArrayList();
 
     public static ObservableList<Part> getAddedParts() {
         return partsForProduct;
@@ -89,18 +89,6 @@ public class AddProductController implements Initializable {
     void OnActionRemoveAssociatedPart(ActionEvent event) {
 
         Part selectedPart = addProdRemovingTableV.getSelectionModel().getSelectedItem();
-
-        /*if(selectedPart != null) {
-            boolean deletedPart = Inventory.deletePart(selectedPart);
-
-            if(deletedPart){
-                System.out.println("Deleted!");
-            } else {
-                System.out.println("Not deleted!");
-            }
-        } else {
-            System.out.println("Part not selected");
-        }*/
 
         if (selectedPart == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -120,7 +108,7 @@ public class AddProductController implements Initializable {
 
     @FXML
     void onActionAddPart(ActionEvent event) {
-        // TODO: FIX - added parts disappear
+
         Part partToAdd = addProdAddingTableV.getSelectionModel().getSelectedItem();
 
         if (partToAdd == null)
@@ -158,7 +146,11 @@ public class AddProductController implements Initializable {
             int max = Integer.parseInt(addProdMaxText.getText());
             int min = Integer.parseInt(addProdMinText.getText());
 
-            Inventory.addProduct(new Product(id, name, price, stock, min, max));
+            Product saveProduct = new Product(id, name, price, stock, min, max);
+            Inventory.addProduct(saveProduct);
+            for(Part addPart : partsForProduct) {
+                saveProduct.addAssociatedPart(addPart);
+            }
 
             stage = (Stage)((Button)event.getSource()).getScene().getWindow();
             scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
