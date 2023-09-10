@@ -139,7 +139,8 @@ public class AddProductController implements Initializable {
     @FXML
     void onActionSaveAddProduct(ActionEvent event) throws IOException {
         try {
-            int id = Integer.parseInt(addProdIdText.getText());
+            // int id = Integer.parseInt(addProdIdText.getText());
+            int id = Inventory.generateUniquePartId();
             String name = addProdNameText.getText();
             int stock = Integer.parseInt(addProdInvText.getText());
             double price = Double.parseDouble(addProdPriceText.getText());
@@ -198,6 +199,8 @@ public class AddProductController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        addProdIdText.setDisable(true);
+
         addProdAddingTableV.setItems(Inventory.getAllParts());
 
         addProdAddPartId.setCellValueFactory(new PropertyValueFactory<>("id"));

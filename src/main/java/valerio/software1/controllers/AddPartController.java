@@ -85,7 +85,8 @@ public class AddPartController implements Initializable {
 
         try
         {
-            int id = Integer.parseInt(addPartIdText.getText());
+            // int id = Integer.parseInt(addPartIdText.getText());
+            int id = Inventory.generateUniquePartId();
             String name = addPartNameText.getText();
             int stock = Integer.parseInt(addPartInvText.getText());
             double price = Double.parseDouble(addPartPriceText.getText());
@@ -124,6 +125,7 @@ public class AddPartController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        addPartIdText.setDisable(true);
     }
 
 }
