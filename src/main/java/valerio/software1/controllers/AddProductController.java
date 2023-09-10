@@ -79,9 +79,9 @@ public class AddProductController implements Initializable {
     @FXML
     private TextField addProdSearch;
 
-    private static final ObservableList<Part> partsForProduct = FXCollections.observableArrayList();
+    public ObservableList<Part> partsForProduct = FXCollections.observableArrayList();
 
-    public static ObservableList<Part> getAddedParts() {
+    public ObservableList<Part> getAddedParts() {
         return partsForProduct;
     }
 
@@ -100,7 +100,8 @@ public class AddProductController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                Inventory.deletePart(selectedPart);
+                //Inventory.deletePart(selectedPart);
+                partsForProduct.remove(selectedPart);
             }
         }
 
@@ -140,7 +141,7 @@ public class AddProductController implements Initializable {
     void onActionSaveAddProduct(ActionEvent event) throws IOException {
         try {
             // int id = Integer.parseInt(addProdIdText.getText());
-            int id = Inventory.generateUniquePartId();
+            int id = Inventory.generateUniqueProductId();
             String name = addProdNameText.getText();
             int stock = Integer.parseInt(addProdInvText.getText());
             double price = Double.parseDouble(addProdPriceText.getText());
