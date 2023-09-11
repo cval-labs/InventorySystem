@@ -77,7 +77,6 @@ public class ModifyPartController implements Initializable {
             stage.setScene(new Scene(scene));
             stage.show();
         }
-
     }
 
     @FXML
@@ -121,14 +120,10 @@ public class ModifyPartController implements Initializable {
             modifyPartMachineIdText.setText(String.valueOf(((InHouse) part).getMachineId()));
 
         } else if (part instanceof Outsourced) {
-
             modifyPartOutsourcedButton.setSelected(true);
 
             modifyPartMachineIdText.setText(((Outsourced) part).getCompanyName());
-
-
         }
-
     }
 
     /**
@@ -136,5 +131,6 @@ public class ModifyPartController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        modifyPartIdText.setDisable(true);
     }
 }

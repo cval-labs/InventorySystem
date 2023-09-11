@@ -106,22 +106,19 @@ public class ModifyProductController implements Initializable {
     @FXML
     void onActionAddModProduct(ActionEvent event) {
         // Move parts from top table to bottom table
-    try {
-        System.out.println("add button clicked");
-        Part partToAdd = (Part) modProdAddingTV.getSelectionModel().getSelectedItem();
+        try {
+            System.out.println("add button clicked");
+            Part partToAdd = modProdAddingTV.getSelectionModel().getSelectedItem();
 
-        if (partToAdd == null)
-            return;
+            if (partToAdd == null)
+                return;
 
-        associatedParts.add(partToAdd);
+            associatedParts.add(partToAdd);
 
-    } catch(NullPointerException e){
-        // ignore
+        } catch(NullPointerException e){
+            // ignore
+        }
     }
-
-
-    }
-
 
     @FXML
     void onActionRemovePartModProduct(ActionEvent event) {
@@ -142,7 +139,6 @@ public class ModifyProductController implements Initializable {
                 associatedParts.remove(associatedPart);
             }
         }
-
     }
 
     @FXML
@@ -242,6 +238,8 @@ public class ModifyProductController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+            modProdIdText.setDisable(true);
+
             modProdAddingTV.setItems(Inventory.getAllParts());
 
             modProdAddPartId.setCellValueFactory(new PropertyValueFactory<>("id"));

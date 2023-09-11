@@ -53,7 +53,10 @@
                               <Insets right="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <TextField fx:id="modProdIdText" GridPane.columnIndex="1" />
+                        <TextField fx:id="modProdIdText" editable="false" promptText="Auto Gen - Disabled" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Verdana Italic" size="13.0" />
+                           </font></TextField>
                         <TextField fx:id="modProdNameText" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="modProdPriceText" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <TextField fx:id="modProdInvText" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -92,10 +95,13 @@
                      <children>
                         <Button mnemonicParsing="false" onAction="#onActionAddModProduct" text="Add">
                            <HBox.margin>
-                              <Insets right="10.0" top="5.0" />
+                              <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
                      </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </HBox>
                   <TableView fx:id="modProdRemovingTV" prefHeight="200.0" prefWidth="200.0">
                      <columns>
@@ -109,6 +115,9 @@
                      <children>
                         <Button mnemonicParsing="false" onAction="#onActionRemovePartModProduct" text="Remove Associated Part" />
                      </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </HBox>
                   <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
                      <children>

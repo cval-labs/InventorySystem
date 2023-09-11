@@ -62,14 +62,20 @@ public class MainFormController implements Initializable {
 
     @FXML
     void onActionExit(ActionEvent event) {
-        System.exit(0);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to exit the program?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isPresent() && result.get() == ButtonType.OK) {
+            System.exit(0);
+        }
     }
 
     // PARTS METHODS
     @FXML
     void onActionAddPart(ActionEvent event) throws IOException {
         stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/add-part.fxml"));
+        scene = FXMLLoader.load(getClass().getResource("/valerio/software1/add-part.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
     }
@@ -123,7 +129,7 @@ public class MainFormController implements Initializable {
     @FXML
     void onActionAddProduct(ActionEvent event) throws IOException {
         stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        scene  = FXMLLoader.load(getClass().getResource("/valerio/software1/add-product.fxml"));
+        scene = FXMLLoader.load(getClass().getResource("/valerio/software1/add-product.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
     }
