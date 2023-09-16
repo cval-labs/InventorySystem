@@ -215,9 +215,9 @@ public class MainFormController implements Initializable {
 
             }
             catch (NumberFormatException e) {
-                System.out.println("Please enter valid values");
-                System.out.println("Exception: " + e);
-                System.out.println("Exception: " + e.getMessage());
+//                System.out.println("Please enter valid values");
+//                System.out.println("Exception: " + e);
+//                System.out.println("Exception: " + e.getMessage());
 
                 Alert alert = new Alert(Alert.AlertType.ERROR, "This part does not exist");
                 Optional<ButtonType> result = alert.showAndWait();

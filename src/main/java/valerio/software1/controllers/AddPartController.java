@@ -95,6 +95,53 @@ public class AddPartController implements Initializable {
             String minS = addPartMinText.getText();
             String machineIdS = textIdAndCompName.getText();
 
+            if (name.isEmpty()) {
+                // System.out.println("Must enter a name");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a name");
+                alert.showAndWait();
+                return;
+            }
+            if (stockS.isEmpty()) {
+                // System.out.println("Please enter an Inv value");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter an Inv value");
+                alert.showAndWait();
+                return;
+            }
+            if (priceS.isEmpty()) {
+                // System.out.println("Please enter a price");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a price");
+                alert.showAndWait();
+                return;
+            }
+            if (maxS.isEmpty()) {
+                // System.out.println("Please enter a Max value");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a Max value");
+                alert.showAndWait();
+                return;
+            }
+            if (minS.isEmpty()) {
+                // System.out.println("Please enter a Min value");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a Min value");
+                alert.showAndWait();
+                return;
+            }
+            if (addPartInHouseButton.isSelected() && machineIdS.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a Machine ID");
+                alert.showAndWait();
+                return;
+            } else if (addPartOutsourcedButton.isSelected() && machineIdS.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a Company Name");
+                alert.showAndWait();
+                return;
+            }
+
             // int id = Integer.parseInt(addPartIdText.getText());
 
             int stock = Integer.parseInt(stockS);
@@ -102,13 +149,19 @@ public class AddPartController implements Initializable {
             int max = Integer.parseInt(maxS);
             int min = Integer.parseInt(minS);
 
-            if (min > stock) {
-                System.out.println("Inv must be greater than min");
+            if (min > stock || max < stock) {
+                System.out.println("Inv must be between Max and Min");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Inv must be between Max and Min");
+                alert.showAndWait();
                 return;
             }
 
-            if (max < stock) {
-                System.out.println("Inv must be less than max");
+            if (!priceS.contains(".")) {
+                System.out.println("Price must be a double");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Price must be a double");
+                alert.showAndWait();
                 return;
             }
 
@@ -129,9 +182,9 @@ public class AddPartController implements Initializable {
             stage.show();
 
         } catch(NumberFormatException e){
-            System.out.println("Please enter valid values");
-            System.out.println("Exception: " + e);
-            System.out.println("Exception: " + e.getMessage());
+//            System.out.println("Please enter valid values");
+//            System.out.println("Exception: " + e);
+//            System.out.println("Exception: " + e.getMessage());
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialogue");
