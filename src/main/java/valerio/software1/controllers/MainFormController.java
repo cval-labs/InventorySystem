@@ -139,41 +139,28 @@ public class MainFormController implements Initializable {
         // retrieves selected product
         Product selectedProduct = mainProductTV.getSelectionModel().getSelectedItem();
 
-        /*if (selectedProduct != null) {
-            Inventory.deleteProduct(selectedProduct);
-        } else {
-            System.out.println("Product not selected");
-        }*/
-
-        /*if (selectedProduct != null) {
-            // boolean variable holds true or false value from deleteProduct
-            // above if-else doesn't make use of false value
-            boolean deleted = Inventory.deleteProduct(selectedProduct);
-
-            if(deleted){
-                System.out.println("Deleted!");
-            } else {
-                System.out.println("Not deleted!");
-            }
-        } else {
-            System.out.println("Product not selected");
-        }*/
-
         if (selectedProduct == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please select a product");
             alert.showAndWait();
         } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "This will be deleted! Do you want to continue?");
+            if (!selectedProduct.getAllAssociatedParts().isEmpty()) {
+                // System.out.println("this product contains parts");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("This product contains parts");
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "This will be deleted! Do you want to continue?");
+                Optional<ButtonType> result = alert.showAndWait();
 
-            Optional<ButtonType> result = alert.showAndWait();
-
-            if(result.isPresent() && result.get() == ButtonType.OK) {
-                boolean deleted = Inventory.deleteProduct(selectedProduct);
-                if(deleted){
-                    System.out.println("Successfully Deleted!");
+                if(result.isPresent() && result.get() == ButtonType.OK) {
+                    boolean deleted = Inventory.deleteProduct(selectedProduct);
+                    if(deleted){
+                        System.out.println("Successfully Deleted!");
+                    }
                 }
             }
+
         }
 
     }
@@ -216,12 +203,30 @@ public class MainFormController implements Initializable {
 
                 if (partToSearch != null) {
                     parts.add(partToSearch);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "This part does not exist");
+                    Optional<ButtonType> result = alert.showAndWait();
+
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+                        mainPartSearch.setText("");
+                        return;
+                    }
                 }
+
             }
             catch (NumberFormatException e) {
-                // ignore
-            }
+                System.out.println("Please enter valid values");
+                System.out.println("Exception: " + e);
+                System.out.println("Exception: " + e.getMessage());
 
+                Alert alert = new Alert(Alert.AlertType.ERROR, "This part does not exist");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    mainPartSearch.setText("");
+                    return;
+                }
+            }
         }
 
         mainPartTV.setItems(parts);
@@ -241,10 +246,24 @@ public class MainFormController implements Initializable {
 
                 if (prodToSearch != null) {
                     products.add(prodToSearch);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "This product does not exist");
+                    Optional<ButtonType> result = alert.showAndWait();
+
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+                        mainProductSearch.setText("");
+                        return;
+                    }
                 }
             }
             catch(NumberFormatException e) {
-                // ignore
+                Alert alert = new Alert(Alert.AlertType.ERROR, "This product does not exist");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    mainProductSearch.setText("");
+                    return;
+                }
             }
         }
 

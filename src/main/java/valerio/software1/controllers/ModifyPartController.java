@@ -19,6 +19,9 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * @author Cristina Valerio
+ */
 public class ModifyPartController implements Initializable {
 
     Stage stage;
@@ -81,7 +84,7 @@ public class ModifyPartController implements Initializable {
 
     @FXML
     void onActionSaveModifyPart(ActionEvent event) throws IOException {
-
+        // TODO: validation checks
         int id = Integer.parseInt(modifyPartIdText.getText());
         String name = modifyPartNameText.getText();
         int stock = Integer.parseInt(modifyPartInvText.getText());
@@ -105,6 +108,10 @@ public class ModifyPartController implements Initializable {
         stage.show();
     }
 
+
+    /**
+     * @param part the part to be moved to Modify Part
+     */
     public void movePart(Part part) {
         modifyPartIdText.setText(String.valueOf(part.getId()));
         modifyPartNameText.setText(part.getName());

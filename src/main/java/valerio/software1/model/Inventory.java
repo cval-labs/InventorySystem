@@ -13,10 +13,16 @@ public class Inventory {
     static int uniquePartId = 1;
     static int uniqueProductId = 1;
 
+    /**
+     * generates a unique id for parts
+     */
     public static int generateUniquePartId(){
         return uniquePartId++;
     }
 
+    /**
+     * generates a unique id for products
+     */
     public static int generateUniqueProductId(){
         return uniqueProductId++;
     }

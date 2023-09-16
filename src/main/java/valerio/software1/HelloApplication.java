@@ -8,6 +8,11 @@ import valerio.software1.model.*;
 
 import java.io.IOException;
 
+/**
+ * JAVADOCS FOLDER LOCATION: In this project in the src folder
+ * FUTURE ENHANCEMENTS:
+ *
+ */
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -18,6 +23,9 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         Part part1 = new InHouse(Inventory.generateUniquePartId(), "Wheel", 4.99, 30, 1, 35, 1);
         Part part2 = new Outsourced(Inventory.generateUniquePartId(), "Handle", 3.99, 40, 10, 40, "ABC Company");

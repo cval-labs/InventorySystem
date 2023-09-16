@@ -18,25 +18,31 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * @author Cristina Valerio
+ */
 public class AddPartController implements Initializable {
 
     Stage stage;
     Parent scene;
 
     @FXML
-    private Label machineIdToCompName;
+    private RadioButton addPartInHouseButton;
+
+    @FXML
+    private RadioButton addPartOutsourcedButton;
 
     @FXML
     private TextField addPartIdText;
 
     @FXML
-    private RadioButton addPartInHouseButton;
+    private TextField addPartNameText;
 
     @FXML
     private TextField addPartInvText;
 
     @FXML
-    private TextField textIdAndCompName;
+    private TextField addPartPriceText;
 
     @FXML
     private TextField addPartMaxText;
@@ -45,13 +51,10 @@ public class AddPartController implements Initializable {
     private TextField addPartMinText;
 
     @FXML
-    private TextField addPartNameText;
+    private TextField textIdAndCompName;
 
     @FXML
-    private RadioButton addPartOutsourcedButton;
-
-    @FXML
-    private TextField addPartPriceText;
+    private Label machineIdToCompName;
 
     @FXML
     void onActionCancelAddedPart(ActionEvent event) throws IOException {
@@ -85,16 +88,34 @@ public class AddPartController implements Initializable {
 
         try
         {
-            // int id = Integer.parseInt(addPartIdText.getText());
-            int id = Inventory.generateUniquePartId();
             String name = addPartNameText.getText();
-            int stock = Integer.parseInt(addPartInvText.getText());
-            double price = Double.parseDouble(addPartPriceText.getText());
-            int max = Integer.parseInt(addPartMaxText.getText());
-            int min = Integer.parseInt(addPartMinText.getText());
+            String stockS = addPartInvText.getText();
+            String priceS = addPartPriceText.getText();
+            String maxS = addPartMaxText.getText();
+            String minS = addPartMinText.getText();
+            String machineIdS = textIdAndCompName.getText();
+
+            // int id = Integer.parseInt(addPartIdText.getText());
+
+            int stock = Integer.parseInt(stockS);
+            double price = Double.parseDouble(priceS);
+            int max = Integer.parseInt(maxS);
+            int min = Integer.parseInt(minS);
+
+            if (min > stock) {
+                System.out.println("Inv must be greater than min");
+                return;
+            }
+
+            if (max < stock) {
+                System.out.println("Inv must be less than max");
+                return;
+            }
+
+            int id = Inventory.generateUniquePartId(); // doesn't increase ID if placed after validation checks
 
             if (addPartInHouseButton.isSelected()) {
-                int machineId = Integer.parseInt(textIdAndCompName.getText());
+                int machineId = Integer.parseInt(machineIdS);
                 Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
             }
             else if (addPartOutsourcedButton.isSelected()){
@@ -108,9 +129,10 @@ public class AddPartController implements Initializable {
             stage.show();
 
         } catch(NumberFormatException e){
-//            System.out.println("Please enter valid values");
-//            System.out.println("Exception: " + e);
-//            System.out.println("Exception: " + e.getMessage());
+            System.out.println("Please enter valid values");
+            System.out.println("Exception: " + e);
+            System.out.println("Exception: " + e.getMessage());
+
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialogue");
             alert.setContentText("Please enter a valid value for each text field!");

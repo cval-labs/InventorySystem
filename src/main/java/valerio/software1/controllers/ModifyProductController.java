@@ -21,6 +21,9 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * @author Cristina Valerio
+ */
 public class ModifyProductController implements Initializable {
 
     Stage stage;
@@ -143,33 +146,101 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     void onActionSaveModifyProduct(ActionEvent event) throws IOException {
+        try {
+            String name = modProdNameText.getText();
+            String stockS = modProdInvText.getText();
+            String priceS = modProdPriceText.getText();
+            String maxS = modProdMaxText.getText();
+            String minS = modProdMinText.getText();
 
-        int id = Integer.parseInt(modProdIdText.getText());
-        String name = modProdNameText.getText();
-        int stock = Integer.parseInt(modProdInvText.getText());
-        double price = Double.parseDouble(modProdPriceText.getText());
-        int max = Integer.parseInt(modProdMaxText.getText());
-        int min = Integer.parseInt(modProdMinText.getText());
-
-        //Inventory.updatesProduct(id, new Product(id, name, price, stock, min, max));
-        Product modifiedProduct = new Product(id, name, price, stock, min, max);
-        for(Part addPart : associatedParts) {
-            modifiedProduct.addAssociatedPart(addPart);
-        }
-
-        int index = -1;
-        for(Product modProduct : Inventory.getAllProducts()) {
-            index++;
-            if (modProduct.getId() == id) {
-                    Inventory.updateProduct(index, modifiedProduct);
-                    break; // exits for-loop entirely after condition met and previous line executed, continues with code after loop
+            if (name.isEmpty()) {
+                // System.out.println("Must enter a name");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a name");
+                alert.showAndWait();
+                return;
             }
+            if (stockS.isEmpty()) {
+                // System.out.println("Please enter an Inv value");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter an Inv value");
+                alert.showAndWait();
+                return;
+            }
+            if (priceS.isEmpty()) {
+                System.out.println("Please enter a price");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a price");
+                alert.showAndWait();
+                return;
+            }
+            if (maxS.isEmpty()) {
+                System.out.println("Please enter a Max value");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a Max value");
+                alert.showAndWait();
+                return;
+            }
+            if (minS.isEmpty()) {
+                System.out.println("Please enter a Min value");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a Min value");
+                alert.showAndWait();
+                return;
+            }
+
+            int id = Integer.parseInt(modProdIdText.getText());
+            int stock = Integer.parseInt(stockS);
+            double price = Double.parseDouble(priceS);
+            int max = Integer.parseInt(maxS);
+            int min = Integer.parseInt(minS);
+
+            if (min > stock || max < stock) {
+                System.out.println("Inv must be between Max and Min");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Inv must be between Max and Min");
+                alert.showAndWait();
+                return;
+            }
+
+            if (!priceS.contains(".")) {
+                System.out.println("Price must be a double");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Price must be a double");
+                alert.showAndWait();
+                return;
+            }
+
+            //Inventory.updatesProduct(id, new Product(id, name, price, stock, min, max));
+            Product modifiedProduct = new Product(id, name, price, stock, min, max);
+            for(Part addPart : associatedParts) {
+                modifiedProduct.addAssociatedPart(addPart);
+            }
+
+            int index = -1;
+            for(Product modProduct : Inventory.getAllProducts()) {
+                index++;
+                if (modProduct.getId() == id) {
+                    Inventory.updateProduct(index, modifiedProduct);
+                    break; // exits for-loop entirely
+                }
+            }
+
+            stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
+            stage.setScene(new Scene(scene));
+            stage.show();
+        } catch (NumberFormatException e) {
+//            System.out.println("Please enter valid values");
+//            System.out.println("Exception: " + e);
+//            System.out.println("Exception: " + e.getMessage());
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialogue");
+            alert.setContentText("Please enter a valid value for each text field!");
+            alert.showAndWait();
         }
 
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
-        stage.setScene(new Scene(scene));
-        stage.show();
     }
 
     @FXML
@@ -189,7 +260,7 @@ public class ModifyProductController implements Initializable {
     }
 
     /**
-     * @param product the product moved from MainFormController
+     * @param product the product moved to Modify Product
      */
     public void moveProduct(Product product) {
         try {
@@ -199,7 +270,6 @@ public class ModifyProductController implements Initializable {
             modProdPriceText.setText(String.valueOf(product.getPrice()));
             modProdMaxText.setText(String.valueOf(product.getMax()));
             modProdMinText.setText(String.valueOf(product.getMin()));
-            // partsForProduct.addAll(getAddedParts());
             //modProdRemovingTV.setItems(product.getAllAssociatedParts());
             associatedParts.addAll(product.getAllAssociatedParts());
         } catch (NullPointerException e) {
@@ -220,10 +290,24 @@ public class ModifyProductController implements Initializable {
 
                 if (partToSearch != null) {
                     parts.add(partToSearch);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "This part does not exist");
+                    Optional<ButtonType> result = alert.showAndWait();
+
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+                        modProdSearch.setText("");
+                        return;
+                    }
                 }
             }
             catch (NumberFormatException e) {
-                // ignore
+                Alert alert = new Alert(Alert.AlertType.ERROR, "This part does not exist");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    modProdSearch.setText("");
+                    return;
+                }
             }
 
         }

@@ -17,17 +17,23 @@ import valerio.software1.model.Product;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * @author Cristina Valerio
+ */
 public class AddProductController implements Initializable {
 
     Stage stage;
     Parent scene;
 
     @FXML
-    private TableColumn<Part, Integer> addProdAddInvLevel;
+    private TableView<Part> addProdAddingTableV; // top table
 
     @FXML
     private TableColumn<Part, Integer> addProdAddPartId;
@@ -36,17 +42,22 @@ public class AddProductController implements Initializable {
     private TableColumn<Part, String> addProdAddPartName;
 
     @FXML
-    private TableColumn<Part, Double> addProdAddPrice;
+    private TableColumn<Part, Integer> addProdAddInvLevel;
 
-    // top table
     @FXML
-    private TableView<Part> addProdAddingTableV;
+    private TableColumn<Part, Double> addProdAddPrice;
 
     @FXML
     private TextField addProdIdText;
 
     @FXML
+    private TextField addProdNameText;
+
+    @FXML
     private TextField addProdInvText;
+
+    @FXML
+    private TextField addProdPriceText;
 
     @FXML
     private TextField addProdMaxText;
@@ -55,32 +66,28 @@ public class AddProductController implements Initializable {
     private TextField addProdMinText;
 
     @FXML
-    private TextField addProdNameText;
-
-    @FXML
-    private TextField addProdPriceText;
+    private TableView<Part> addProdRemovingTableV; // bottom table
 
     @FXML
     private TableColumn<Part, Integer> addProdRemPartId;
 
     @FXML
-    private TableColumn<Part, Integer> addProdRemInvLevel;
-
-    @FXML
     private TableColumn<Part, String> addProdRemPartName;
 
     @FXML
-    private TableColumn<Part, Double> addProdRemPrice;
+    private TableColumn<Part, Integer> addProdRemInvLevel;
 
-    // bottom table
     @FXML
-    private TableView<Part> addProdRemovingTableV;
+    private TableColumn<Part, Double> addProdRemPrice;
 
     @FXML
     private TextField addProdSearch;
 
     public ObservableList<Part> partsForProduct = FXCollections.observableArrayList();
 
+    /**
+     * @return parts associated with the product
+     */
     public ObservableList<Part> getAddedParts() {
         return partsForProduct;
     }
@@ -140,13 +147,71 @@ public class AddProductController implements Initializable {
     @FXML
     void onActionSaveAddProduct(ActionEvent event) throws IOException {
         try {
-            // int id = Integer.parseInt(addProdIdText.getText());
-            int id = Inventory.generateUniqueProductId();
             String name = addProdNameText.getText();
-            int stock = Integer.parseInt(addProdInvText.getText());
-            double price = Double.parseDouble(addProdPriceText.getText());
-            int max = Integer.parseInt(addProdMaxText.getText());
-            int min = Integer.parseInt(addProdMinText.getText());
+            String stockS = addProdInvText.getText();
+            String priceS = addProdPriceText.getText();
+            String maxS = addProdMaxText.getText();
+            String minS = addProdMinText.getText();
+
+            if (name.isEmpty()) {
+                // System.out.println("Must enter a name");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a name");
+                alert.showAndWait();
+                return;
+            }
+            if (stockS.isEmpty()) {
+                // System.out.println("Please enter an Inv value");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter an Inv value");
+                alert.showAndWait();
+                return;
+            }
+            if (priceS.isEmpty()) {
+                // System.out.println("Please enter a price");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a price");
+                alert.showAndWait();
+                return;
+            }
+            if (maxS.isEmpty()) {
+                // System.out.println("Please enter a Max value");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a Max value");
+                alert.showAndWait();
+                return;
+            }
+            if (minS.isEmpty()) {
+                // System.out.println("Please enter a Min value");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a Min value");
+                alert.showAndWait();
+                return;
+            }
+
+            // int id = Integer.parseInt(addProdIdText.getText());
+            int stock = Integer.parseInt(stockS);
+            double price = Double.parseDouble(priceS);
+            int max = Integer.parseInt(maxS);
+            int min = Integer.parseInt(minS);
+
+            if (min > stock || max < stock) {
+                System.out.println("Inv must be between Max and Min");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Inv must be between Max and Min");
+                alert.showAndWait();
+                return;
+            }
+
+            if (!priceS.contains(".")) {
+                System.out.println("Price must be a double");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Price must be a double");
+                alert.showAndWait();
+                return;
+            }
+
+            int id = Inventory.generateUniqueProductId();  // doesn't increase ID if placed after validation checks
 
             Product saveProduct = new Product(id, name, price, stock, min, max);
             Inventory.addProduct(saveProduct);
@@ -158,6 +223,7 @@ public class AddProductController implements Initializable {
             scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
             stage.setScene(new Scene(scene));
             stage.show();
+
         } catch (NumberFormatException e) {
 //            System.out.println("Please enter valid values");
 //            System.out.println("Exception: " + e);
@@ -183,10 +249,24 @@ public class AddProductController implements Initializable {
 
                 if (partToSearch != null) {
                     parts.add(partToSearch);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "This part does not exist");
+                    Optional<ButtonType> result = alert.showAndWait();
+
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+                        addProdSearch.setText("");
+                        return;
+                    }
                 }
             }
             catch (NumberFormatException e) {
-                // ignore
+                Alert alert = new Alert(Alert.AlertType.ERROR, "This part does not exist");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    addProdSearch.setText("");
+                    return;
+                }
             }
 
         }
