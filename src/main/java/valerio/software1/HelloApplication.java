@@ -10,7 +10,7 @@ import java.io.IOException;
 
 /**
  * JAVADOCS FOLDER LOCATION: In the src folder of this project.
- * FUTURE ENHANCEMENTS: The Inventory System will highlight text fields with invalid values, which will replace pop-up boxes.
+ * FUTURE ENHANCEMENTS: The Inventory System will highlight text fields with invalid values.
  */
 public class HelloApplication extends Application {
     /**
