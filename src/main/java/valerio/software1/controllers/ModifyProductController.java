@@ -22,7 +22,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
- * @author Cristina Valerio
+ * This is the controller for modify-product.fxml.
  */
 public class ModifyProductController implements Initializable {
 
@@ -81,8 +81,6 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     private TextField modProdSearch;
-
-    Product parts;
 
     public ObservableList<Part> associatedParts = FXCollections.observableArrayList();
 
@@ -260,6 +258,7 @@ public class ModifyProductController implements Initializable {
     }
 
     /**
+     * This method moves the data of a selected product on the Main Screen tableview to Modify Product screen.
      * @param product the product moved to Modify Product
      */
     public void moveProduct(Product product) {

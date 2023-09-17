@@ -19,7 +19,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
- * @author Cristina Valerio
+ * This is the controller for add-part.fxml.
  */
 public class AddPartController implements Initializable {
 

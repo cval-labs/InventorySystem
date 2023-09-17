@@ -19,6 +19,9 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * This is the controller for main-form.fxml (Main Screen).
+ */
 public class MainFormController implements Initializable {
 
     Stage stage;

@@ -9,11 +9,13 @@ import valerio.software1.model.*;
 import java.io.IOException;
 
 /**
- * JAVADOCS FOLDER LOCATION: In this project in the src folder
- * FUTURE ENHANCEMENTS:
- *
+ * JAVADOCS FOLDER LOCATION: In the src folder of this project.
+ * FUTURE ENHANCEMENTS: The Inventory System will highlight text fields with invalid values, which will replace pop-up boxes.
  */
 public class HelloApplication extends Application {
+    /**
+     * This sets up the GUI.
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-form.fxml"));
@@ -24,7 +26,7 @@ public class HelloApplication extends Application {
     }
 
     /**
-     * @param args
+     * The main method. This is the first method called when the program starts.
      */
     public static void main(String[] args) {
         Part part1 = new InHouse(Inventory.generateUniquePartId(), "Wheel", 4.99, 30, 1, 35, 1);

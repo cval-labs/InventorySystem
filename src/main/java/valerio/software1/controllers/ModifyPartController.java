@@ -20,7 +20,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
- * @author Cristina Valerio
+ * This is the controller for modify-product.fxml.
  */
 public class ModifyPartController implements Initializable {
 

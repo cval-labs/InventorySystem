@@ -25,7 +25,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
- * @author Cristina Valerio
+ * This is the controller for add-product.fxml.
  */
 public class AddProductController implements Initializable {
 
