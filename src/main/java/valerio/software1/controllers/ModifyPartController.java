@@ -199,9 +199,6 @@ public class ModifyPartController implements Initializable {
         modifyPartMaxText.setText(String.valueOf(part.getMax()));
         modifyPartMinText.setText(String.valueOf(part.getMin()));
 
-        /*if(modifyPartInHouseButton.isSelected()){
-            modifyPartMachineIdText.setText(part);
-        }*/
         if(part instanceof InHouse) {
             modifyPartMachineIdText.setText(String.valueOf(((InHouse) part).getMachineId()));
 

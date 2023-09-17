@@ -276,7 +276,7 @@ public class MainFormController implements Initializable {
     }
 
     /**
-     * initializes the controller
+     * Initializes the controller
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

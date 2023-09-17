@@ -87,26 +87,6 @@ public class ModifyProductController implements Initializable {
      */
     public ObservableList<Part> associatedParts = FXCollections.observableArrayList();
 
-    /*ObservableList<Part> partsForProduct = FXCollections.observableArrayList();
-
-    ObservableList<Part> getAddedParts() {
-        return partsForProduct;
-    }*/
-
-/*    public void addsAssociatedPart(Part part) {
-        partsForProduct.add(part);
-    }*/
-
-/*    public static void deleteAssociatedPart(Part associatedPart) {
-
-        for(Part part : partsForProduct){
-            if(part.getId() == associatedPart.getId()){
-                getAddedParts().remove(associatedPart);
-                return;
-            }
-        }
-    }*/
-
     @FXML
     void onActionAddModProduct(ActionEvent event) {
         // Move parts from top table to bottom table
@@ -139,7 +119,6 @@ public class ModifyProductController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.isPresent() && result.get() == ButtonType.OK) {
-               // partsForProduct.remove(associatedPart);
                 associatedParts.remove(associatedPart);
             }
         }
@@ -169,21 +148,21 @@ public class ModifyProductController implements Initializable {
                 return;
             }
             if (priceS.isEmpty()) {
-                System.out.println("Please enter a price");
+                // System.out.println("Please enter a price");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Please enter a price");
                 alert.showAndWait();
                 return;
             }
             if (maxS.isEmpty()) {
-                System.out.println("Please enter a Max value");
+                // System.out.println("Please enter a Max value");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Please enter a Max value");
                 alert.showAndWait();
                 return;
             }
             if (minS.isEmpty()) {
-                System.out.println("Please enter a Min value");
+                // System.out.println("Please enter a Min value");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Please enter a Min value");
                 alert.showAndWait();
@@ -197,7 +176,7 @@ public class ModifyProductController implements Initializable {
             int min = Integer.parseInt(minS);
 
             if (min > stock || max < stock) {
-                System.out.println("Inv must be between Max and Min");
+                // System.out.println("Inv must be between Max and Min");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Inv must be between Max and Min");
                 alert.showAndWait();
@@ -205,7 +184,7 @@ public class ModifyProductController implements Initializable {
             }
 
             if (!priceS.contains(".")) {
-                System.out.println("Price must be a double");
+                // System.out.println("Price must be a double");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Price must be a double");
                 alert.showAndWait();

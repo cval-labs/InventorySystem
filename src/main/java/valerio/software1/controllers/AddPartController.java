@@ -140,7 +140,7 @@ public class AddPartController implements Initializable {
                 return;
             }
             if (!priceS.contains(".")) {
-                System.out.println("Price must be a double");
+                // System.out.println("Price must be a double");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Price must be a double");
                 alert.showAndWait();
@@ -155,7 +155,7 @@ public class AddPartController implements Initializable {
             int min = Integer.parseInt(minS);
 
             if (min > stock || max < stock) {
-                System.out.println("Inv must be between Max and Min");
+                // System.out.println("Inv must be between Max and Min");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Inv must be between Max and Min");
                 alert.showAndWait();
@@ -163,7 +163,7 @@ public class AddPartController implements Initializable {
             }
 
             if (!priceS.contains(".")) {
-                System.out.println("Price must be a double");
+                // System.out.println("Price must be a double");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Price must be a double");
                 alert.showAndWait();

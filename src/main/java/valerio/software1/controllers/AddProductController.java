@@ -84,12 +84,12 @@ public class AddProductController implements Initializable {
     private TextField addProdSearch;
 
     /**
-     * This observable list is for parts added to a product.
+     * Observable List for parts added to a product.
      */
     public ObservableList<Part> partsForProduct = FXCollections.observableArrayList();
 
     /**
-     * This method returns the parts added to a product.
+     * Returns the parts added to a product.
      * @return parts associated with the product
      */
     public ObservableList<Part> getAddedParts() {
