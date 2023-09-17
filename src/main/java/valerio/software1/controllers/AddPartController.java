@@ -85,9 +85,7 @@ public class AddPartController implements Initializable {
 
     @FXML
     void onActionSaveAddedPart(ActionEvent event) throws IOException {
-
-        try
-        {
+        try {
             String name = addPartNameText.getText();
             String stockS = addPartInvText.getText();
             String priceS = addPartPriceText.getText();
@@ -138,6 +136,13 @@ public class AddPartController implements Initializable {
             } else if (addPartOutsourcedButton.isSelected() && machineIdS.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Please enter a Company Name");
+                alert.showAndWait();
+                return;
+            }
+            if (!priceS.contains(".")) {
+                System.out.println("Price must be a double");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Price must be a double");
                 alert.showAndWait();
                 return;
             }

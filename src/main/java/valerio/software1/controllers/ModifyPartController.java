@@ -84,28 +84,107 @@ public class ModifyPartController implements Initializable {
 
     @FXML
     void onActionSaveModifyPart(ActionEvent event) throws IOException {
-        // TODO: validation checks
-        int id = Integer.parseInt(modifyPartIdText.getText());
-        String name = modifyPartNameText.getText();
-        int stock = Integer.parseInt(modifyPartInvText.getText());
-        double price = Double.parseDouble(modifyPartPriceText.getText());
-        int max = Integer.parseInt(modifyPartMaxText.getText());
-        int min = Integer.parseInt(modifyPartMinText.getText());
+        try {
+            // TODO: validation checks
+            String name = modifyPartNameText.getText();
+            String stockS = modifyPartInvText.getText();
+            String priceS = modifyPartPriceText.getText();
+            String maxS = modifyPartMaxText.getText();
+            String minS = modifyPartMinText.getText();
+            String machineIdS = modifyPartMachineIdText.getText();
 
-        if(modifyPartInHouseButton.isSelected()){
-            int machineId = Integer.parseInt(modifyPartMachineIdText.getText());
-            Inventory.updatesPart(id, new InHouse(id, name, price, stock, min, max, machineId));
-           // Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
-        } else if (modifyPartOutsourcedButton.isSelected()){
-            String companyName = modifyPartMachineIdText.getText();
-           // Inventory.updatePart(, new Outsourced(id, name, price, stock, min, max, companyName));
-            Inventory.updatesPart(id, new Outsourced(id, name, price, stock, min, max, companyName));
+            if (name.isEmpty()) {
+                // System.out.println("Must enter a name");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a name");
+                alert.showAndWait();
+                return;
+            }
+            if (stockS.isEmpty()) {
+                // System.out.println("Please enter an Inv value");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter an Inv value");
+                alert.showAndWait();
+                return;
+            }
+            if (priceS.isEmpty()) {
+                // System.out.println("Please enter a price");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a price");
+                alert.showAndWait();
+                return;
+            }
+            if (maxS.isEmpty()) {
+                // System.out.println("Please enter a Max value");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a Max value");
+                alert.showAndWait();
+                return;
+            }
+            if (minS.isEmpty()) {
+                // System.out.println("Please enter a Min value");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please enter a Min value");
+                alert.showAndWait();
+                return;
+            }
+
+            if (!priceS.contains(".")) {
+                // System.out.println("Price must be a double");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Price must be a double");
+                alert.showAndWait();
+                return;
+            }
+
+            int id = Integer.parseInt(modifyPartIdText.getText());
+            int stock = Integer.parseInt(stockS);
+            double price = Double.parseDouble(priceS);
+            int max = Integer.parseInt(maxS);
+            int min = Integer.parseInt(minS);
+
+            if (min > stock || max < stock) {
+                // System.out.println("Inv must be between Max and Min");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Inv must be between Max and Min");
+                alert.showAndWait();
+                return;
+            }
+
+            if(modifyPartInHouseButton.isSelected()){
+                if(machineIdS.isEmpty()) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Please enter a Machine ID");
+                    alert.showAndWait();
+                    return;
+                }
+                int machineId = Integer.parseInt(machineIdS);
+                Inventory.updatesPart(id, new InHouse(id, name, price, stock, min, max, machineId));
+                // Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
+            } else if (modifyPartOutsourcedButton.isSelected()){
+                String companyName = modifyPartMachineIdText.getText();
+                if(companyName.isEmpty()) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Please enter a Company Name");
+                    alert.showAndWait();
+                    return;
+                }
+                // Inventory.updatePart(, new Outsourced(id, name, price, stock, min, max, companyName));
+                Inventory.updatesPart(id, new Outsourced(id, name, price, stock, min, max, companyName));
+            }
+
+            stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
+            stage.setScene(new Scene(scene));
+            stage.show();
+
+        } catch(NumberFormatException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialogue");
+            alert.setContentText("Please enter a valid value for each text field!");
+            alert.showAndWait();
         }
 
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        scene  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/valerio/software1/main-form.fxml")));
-        stage.setScene(new Scene(scene));
-        stage.show();
     }
 
 
@@ -128,7 +207,7 @@ public class ModifyPartController implements Initializable {
 
         } else if (part instanceof Outsourced) {
             modifyPartOutsourcedButton.setSelected(true);
-
+            machineIdToCompName.setText("Company Name");
             modifyPartMachineIdText.setText(((Outsourced) part).getCompanyName());
         }
     }
