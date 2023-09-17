@@ -83,6 +83,15 @@ public class AddPartController implements Initializable {
         machineIdToCompName.setText("Company Name");
     }
 
+    /**
+     * RUNTIME ERROR: When the "Save" button was clicked
+     * without any text fields filled or text fields contained invalid data,
+     * a NumberFormatException occurred.
+     * I corrected this by using a try-catch block. The try block contains
+     * all required code to save input data, and the catch argument holds a
+     * NumberFormatException object and the block contains code for a
+     * dialogue box to warn the user of the error.
+     */
     @FXML
     void onActionSaveAddedPart(ActionEvent event) throws IOException {
         try {
