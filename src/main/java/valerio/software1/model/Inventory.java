@@ -3,6 +3,9 @@ package valerio.software1.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Holds all parts and products.
+ */
 public class Inventory {
     private static ObservableList<Part> allParts = FXCollections.observableArrayList();
     private static ObservableList<Product> allProducts = FXCollections.observableArrayList();
@@ -14,14 +17,14 @@ public class Inventory {
     static int uniqueProductId = 1;
 
     /**
-     * generates a unique id for parts
+     * Generates a unique id for parts.
      */
     public static int generateUniquePartId(){
         return uniquePartId++;
     }
 
     /**
-     * generates a unique id for products
+     * Generates a unique id for products.
      */
     public static int generateUniqueProductId(){
         return uniqueProductId++;
@@ -46,6 +49,7 @@ public class Inventory {
 //    }
 
     /**
+     * Adds a new part to the inventory.
      * @param newPart the new part to add
      */
     public static void addPart(Part newPart) {
@@ -53,6 +57,7 @@ public class Inventory {
     }
 
     /**
+     * Adds a new product to the inventory.
      * @param newProduct the new product to add
      */
     public static void addProduct(Product newProduct) {
@@ -60,6 +65,7 @@ public class Inventory {
     }
 
     /**
+     * Looks for an existing part.
      * @param partId the part id to look up
      * @return part, else null
      */
@@ -75,6 +81,7 @@ public class Inventory {
     }
 
     /**
+     * Looks for an existing product.
      * @param productId the product id to look up
      * @return product, else null
      */
@@ -90,6 +97,7 @@ public class Inventory {
     }
 
     /**
+     * Looks for an existing part.
      * @param partName the part name to look up
      * @return looked up part
      */
@@ -106,6 +114,7 @@ public class Inventory {
     }
 
     /**
+     * Looks for an existing product.
      * @param productName the product name to look up
      * @return looked up product
      */
@@ -121,6 +130,7 @@ public class Inventory {
     }
 
     /**
+     * Updates an existing part.
      * @param index the part's index
      * @param selectedPart the part to be updated
      */
@@ -129,6 +139,7 @@ public class Inventory {
     }
 
     /**
+     * Updates an existing part.
      * @param id the part's id
      * @param selectedPart the part to be updated
      */
@@ -145,6 +156,7 @@ public class Inventory {
     }
 
     /**
+     * Updates an existing product.
      * @param index the product's index
      * @param selectedProduct the product to be updated
      */
@@ -153,6 +165,7 @@ public class Inventory {
     }
 
     /**
+     * Updates an existing product.
      * @param id the product's id
      * @param selectedProduct the product to be updated
      */
@@ -169,6 +182,7 @@ public class Inventory {
     }
 
     /**
+     * Deletes a selected part.
      * @param selectedPart the part to be deleted
      * @return true if deleted, else false
      */
@@ -183,6 +197,7 @@ public class Inventory {
     }
 
     /**
+     * Deletes a selected product.
      * @param selectedProduct the product to be deleted
      * @return true if deleted, else false
      */
@@ -199,6 +214,7 @@ public class Inventory {
     }
 
     /**
+     * Returns all parts in the inventory.
      * @return all parts
      */
     public static ObservableList<Part> getAllParts(){
@@ -206,6 +222,7 @@ public class Inventory {
     }
 
     /**
+     * Returns all products in the inventory.
      * @return all products
      */
     public static ObservableList<Product> getAllProducts() {

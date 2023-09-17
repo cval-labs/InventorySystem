@@ -201,7 +201,7 @@ public class AddPartController implements Initializable {
     }
 
     /**
-     * initializes the controller
+     * This initializes the controller
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

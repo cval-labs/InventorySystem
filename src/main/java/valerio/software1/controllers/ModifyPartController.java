@@ -85,7 +85,6 @@ public class ModifyPartController implements Initializable {
     @FXML
     void onActionSaveModifyPart(ActionEvent event) throws IOException {
         try {
-            // TODO: validation checks
             String name = modifyPartNameText.getText();
             String stockS = modifyPartInvText.getText();
             String priceS = modifyPartPriceText.getText();
@@ -189,6 +188,7 @@ public class ModifyPartController implements Initializable {
 
 
     /**
+     * This method moves the data of a selected part on the Main Screen tableview to the Modify Part screen.
      * @param part the part to be moved to Modify Part
      */
     public void movePart(Part part) {
@@ -213,7 +213,7 @@ public class ModifyPartController implements Initializable {
     }
 
     /**
-     * initializes the controller
+     * This initializes the controller
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -82,6 +82,9 @@ public class ModifyProductController implements Initializable {
     @FXML
     private TextField modProdSearch;
 
+    /**
+     * This observable list is for parts associated with a product.
+     */
     public ObservableList<Part> associatedParts = FXCollections.observableArrayList();
 
     /*ObservableList<Part> partsForProduct = FXCollections.observableArrayList();
@@ -258,7 +261,7 @@ public class ModifyProductController implements Initializable {
     }
 
     /**
-     * This method moves the data of a selected product on the Main Screen tableview to Modify Product screen.
+     * This method moves the data of a selected product on the Main Screen tableview to the Modify Product screen.
      * @param product the product moved to Modify Product
      */
     public void moveProduct(Product product) {
@@ -317,7 +320,7 @@ public class ModifyProductController implements Initializable {
     }
 
     /**
-     * initializes the controller
+     * This initializes the controller
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
